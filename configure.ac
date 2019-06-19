@@ -32,6 +32,16 @@ AC_ARG_VAR(NVME_OBJ_PATH_ROOT, [The nvme Dbus root])
 AS_IF([test "x$NVME_OBJ_PATH_ROOT" == "x"], [NVME_OBJ_PATH_ROOT="/xyz/openbmc_project/sensors/temperature"])
 AC_DEFINE_UNQUOTED([NVME_OBJ_PATH_ROOT], ["$NVME_OBJ_PATH_ROOT"], [The nvme Dbus root])
 
+# Service dbus objpath
+AC_ARG_VAR(NVME_OBJ_PATH, [The nvme object path])
+AS_IF([test "x$NVME_OBJ_PATH" == "x"], [NVME_OBJ_PATH="/xyz/openbmc_project/sensors/temperature/nvme"])
+AC_DEFINE_UNQUOTED([NVME_OBJ_PATH], ["$NVME_OBJ_PATH"], [The nvme Dbus root])
+
+# Service dbus interface
+AC_ARG_VAR(DBUS_PROPERTY_IFACE, [The properies interface])
+AS_IF([test "x$DBUS_PROPERTY_IFACE" == "x"], [DBUS_PROPERTY_IFACE="org.freedesktop.DBus.Properties"])
+AC_DEFINE_UNQUOTED([DBUS_PROPERTY_IFACE], ["$DBUS_PROPERTY_IFACE"], [The nvme Dbus root])
+
 LT_INIT # Required for systemd linking
 
 # Create configured output

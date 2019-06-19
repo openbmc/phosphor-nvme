@@ -1,5 +1,7 @@
 #include "config.h"
 
+#include "nvmes.hpp"
+
 #include <sdbusplus/bus.hpp>
 #include <sdbusplus/server.hpp>
 #include <sdbusplus/server/object.hpp>
@@ -27,8 +29,38 @@ class Nvme
     {
     }
 
+    struct NVMeConfig
+    {
+        uint8_t index;
+        uint8_t busID;
+        uint8_t presentPin;
+        uint8_t pwrGoodPin;
+        uint64_t criticalHigh;
+        uint64_t criticalLow;
+        uint64_t maxValue;
+        uint64_t minValue;
+    };
+
+    struct NVMeData
+    {
+        bool present;              /* Whether or not the nvme is present  */
+        std::string vendor;        /* The nvme manufacturer  */
+        std::string serialNumber;  /* The nvme serial number  */
+        std::string smartWarnings; /* Indicates smart warnings for the state  */
+        std::string statusFlags;   /* Indicates the status of the drives  */
+        std::string
+            driveLifeUsed; /* A vendor specific estimate of the percentage  */
+        u_int64_t sensorValue; /* Sensor value, if sensor value didn't be
+                                  update, means sensor failure, default set to
+                                  129(0x81) accroding to NVMe-MI SPEC*/
+    };
+
     void run();
     const std::string _objPath;
+
+    std::string getValue(std::string);
+    std::unordered_map<std::string, std::shared_ptr<phosphor::nvme::NvmeSSD>>
+        nvmes;
 
   private:
     sdbusplus::bus::bus& bus;
