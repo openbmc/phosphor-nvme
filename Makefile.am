@@ -4,8 +4,9 @@ bin_PROGRAMS = nvme_main
 
 nvme_main_SOURCES = \
                 nvme_main.cpp  \
-                nvme_manager.cpp
-
+                nvme_manager.cpp \
+                smbus.cpp \
+                nvmes.cpp
 
 
 nvme_main_LDFLAGS = \
@@ -18,3 +19,6 @@ nvme_main_CXX_FLAGS =  \
                 $(PHOSPHOR_DBUS_INTERFACES_CFLAGS) \
 	            $(SDBUSPLUS_CFLAGS) \
 	            $(PHOSPHOR_LOGGING_CFLAGS)
+
+nvmedir = $(sysconfdir)/nvme
+nvme_DATA = nvme_config.json
