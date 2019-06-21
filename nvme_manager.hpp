@@ -3,6 +3,7 @@
 #include "config.h"
 
 #include "nvmes.hpp"
+#include "sdbusplus.hpp"
 
 #include <sdbusplus/bus.hpp>
 #include <sdbusplus/server.hpp>
@@ -46,8 +47,12 @@ class Nvme
     {
         uint8_t index;
         uint8_t busID;
+        std::string faultLedGroupPath;
         uint8_t presentPin;
         uint8_t pwrGoodPin;
+        std::string locateLedControllerBusName;
+        std::string locateLedControllerPath;
+        std::string locateLedGroupPath;
         uint64_t criticalHigh;
         uint64_t criticalLow;
         uint64_t maxValue;
@@ -83,6 +88,33 @@ class Nvme
     /** @brief Map of the object NvmeSSD */
     std::unordered_map<std::string, std::shared_ptr<phosphor::nvme::NvmeSSD>>
         nvmes;
+
+    /** @brief Set locate and fault LED status of SSD
+     *
+     * @param[in] config - Nvme configure data
+     * @param[in] success - Success or not that get NVMe Info by SMbus
+     * @param[in] nvmeData - Nvme information
+     */
+    void setLEDsStatus(const phosphor::nvme::Nvme::NVMeConfig& config,
+                       bool success,
+                       const phosphor::nvme::Nvme::NVMeData& nvmeData);
+
+    /** @brief Set SSD fault LED status */
+    void setFaultLED(const std::string& locateLedGroupPath,
+                     const std::string& ledPath, const bool& request);
+    /** @brief Set SSD locate LED status */
+    void setLocateLED(const std::string& ledPath,
+                      const std::string& locateLedBusName,
+                      const std::string& locateLedPath, const bool& ispresent);
+    /** @brief Get Identify State*/
+    bool getLEDGroupState(const std::string& ledPath);
+
+    /** @brief Set inventory properties of nvme */
+    void setNvmeInventoryProperties(
+        const bool& present, const phosphor::nvme::Nvme::NVMeData& nvmeData,
+        const std::string& inventoryPath);
+
+    void createNVMeInventory();
 
   private:
     /** @brief sdbusplus bus client connection. */
