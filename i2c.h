@@ -5,8 +5,7 @@
 
 #define I2C_DATA_MAX 256
 
-static inline __s32 i2c_read_after_write(int file,
-                                         __u8 slave_addr, __u8 tx_len,
+static inline __s32 i2c_read_after_write(int file, __u8 slave_addr, __u8 tx_len,
                                          __u8* tx_buf, int rx_len, __u8* rx_buf)
 {
     struct i2c_rdwr_ioctl_data msgst;
