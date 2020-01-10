@@ -1,0 +1,10 @@
+Ok-To-Test+1: Jenkins <openbmc-ci-admin@ozlabs.org>
+Verified+1: Jenkins <openbmc-ci-admin@ozlabs.org>
+Code-Review+1: Benjamin Fair <benjaminfair@google.com>
+Code-Review+1: Will Liang <will.liang@quantatw.com>
+Code-Review+2: Tony Lee <tony.lee@quantatw.com>
+Submitted-by: Tony Lee <tony.lee@quantatw.com>
+Submitted-at: Fri, 10 Jan 2020 02:30:51 +0000
+Reviewed-on: https://gerrit.openbmc-project.xyz/c/openbmc/phosphor-nvme/+/22744
+Project: openbmc/phosphor-nvme
+Branch: refs/heads/master
