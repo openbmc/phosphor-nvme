@@ -7,11 +7,24 @@ project(
     ],
 )
 
+# Set build-type according to platform.
+platform = get_option('platform')
+
+platform_src = []
+platform_json = []
+if platform == 'default'
+    platform_src += 'nvme_manager.cpp'
+    platform_json += 'nvme_config.json'
+elif platform == 'mihawk'
+    platform_src += 'mihawk_nvme_manager.cpp'
+    platform_json += 'mihawk_config.json'
+endif
+
 executable(
     'nvme_main',
     [
         'nvme_main.cpp',
-        'nvme_manager.cpp',
+        platform_src,
         'smbus.cpp',
         'nvmes.cpp',
     ],
@@ -25,7 +38,7 @@ executable(
     install_dir: get_option('bindir')
 )
 
-install_data(sources : 'nvme_config.json', install_dir : '/etc/nvme')
+install_data(sources : platform_json, install_dir : '/etc/nvme')
 
 conf_data = configuration_data()
 conf_data.set('NVME_REQUEST_NAME', '"xyz.openbmc_project.nvme.manager"')
