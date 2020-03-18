@@ -50,6 +50,7 @@ class Nvme
     {
         std::string index;
         uint8_t busID;
+        std::string platform;
         std::string faultLedGroupPath;
         uint8_t presentPin;
         uint8_t pwrGoodPin;
@@ -87,7 +88,8 @@ class Nvme
     void run();
 
     /** @brief Get GPIO value of nvme by sysfs */
-    std::string getGPIOValueOfNvme(const std::string& fullPath);
+    int getStatusOfNvme(const std::string& fullPath, std::string Index,
+                        std::string platform, int presentPin);
     /** @brief Map of the object NvmeSSD */
     std::unordered_map<std::string, std::shared_ptr<phosphor::nvme::NvmeSSD>>
         nvmes;
