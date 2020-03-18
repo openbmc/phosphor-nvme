@@ -125,5 +125,48 @@ int phosphor::smbus::Smbus::SendSmbusRWBlockCmdRAW(int smbus_num,
     return res;
 }
 
+int phosphor::smbus::Smbus::set_slave_addr(int file, int address, int force)
+{
+    /* With force, let the user read from/write to the registers
+       even when a driver is also running */
+    if (ioctl(file, force ? I2C_SLAVE_FORCE : I2C_SLAVE, address) < 0) {
+        fprintf(stderr,
+            "Error: Could not set address to 0x%02x: %s\n",
+            address, strerror(errno));
+        return -errno;
+    }
+
+    return 0;
+}
+
+int phosphor::smbus::Smbus::SetSmbusCmdByte(int smbus_num, int8_t device_addr, int8_t smbuscmd , int8_t data)
+{
+    int res;
+
+    gMutex.lock();
+    if(fd[smbus_num] > 0) {
+        res = set_slave_addr(fd[smbus_num], device_addr, I2C_SLAVE_FORCE);
+        if(res < 0) {
+            fprintf(stderr, "set PMBUS BUS%d to slave address 0x%02X failed (%s)\n", smbus_num, device_addr,strerror(errno));
+                close(fd[smbus_num]);
+
+                gMutex.unlock();
+            return -1;
+        }
+    }
+
+    res = i2c_smbus_write_byte_data(fd[smbus_num], smbuscmd, data);
+    if (res < 0) {
+        //fprintf(stderr, "Error: Read failed\n");
+        gMutex.unlock();
+
+        return -1;
+    }
+    // printf("[SetSmbusCmdByte]0x%0*x\n",2, res);
+
+    gMutex.unlock();
+    return res;
+}
+
 } // namespace smbus
 } // namespace phosphor

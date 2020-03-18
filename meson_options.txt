@@ -1,0 +1,5 @@
+# Supported platform nvme are: default, mihawk
+option(
+    'platform', type: 'string', value: 'default',
+    description: 'Set build-type according to platform',
+)
