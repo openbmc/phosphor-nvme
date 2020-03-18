@@ -17,6 +17,7 @@
 #define NVME_SSD_SLAVE_ADDRESS 0x6a
 #define GPIO_BASE_PATH "/sys/class/gpio/gpio"
 #define IS_PRESENT "0"
+#define MIHAWK_PRESENT 1
 #define POWERGD "1"
 #define NOWARNING_STRING "ff"
 
@@ -195,7 +196,9 @@ std::string intToHex(int input)
 }
 
 /** @brief Get NVMe info over smbus  */
-bool getNVMeInfobyBusID(int busID, phosphor::nvme::Nvme::NVMeData& nvmeData)
+bool getNVMeInfobyBusID(int busID, int address, int channel,
+                        phosphor::nvme::Nvme::NVMeData& nvmeData,
+                        std::string platform)
 {
     nvmeData.present = true;
     nvmeData.vendor = "";
@@ -228,7 +231,10 @@ bool getNVMeInfobyBusID(int busID, phosphor::nvme::Nvme::NVMeData& nvmeData)
 
         return nvmeData.present;
     }
-
+    if (platform == "mihawk")
+    {
+        smbus.SetSmbusCmdByte(busID, address, 0, channel);
+    }
     auto res_int =
         smbus.SendSmbusRWBlockCmdRAW(busID, NVME_SSD_SLAVE_ADDRESS, &tx_data,
                                      sizeof(tx_data), rsp_data_command_0);
@@ -364,6 +370,9 @@ std::vector<phosphor::nvme::Nvme::NVMeConfig> Nvme::getNvmeConfig()
             {
                 uint8_t index = instance.value("NVMeDriveIndex", 0);
                 uint8_t busID = instance.value("NVMeDriveBusID", 0);
+                uint8_t address = instance.value("NVMeAddress", 0);
+                uint8_t channel = instance.value("NVMeChannel", 0);
+                std::string platform = instance.value("NVMePlatform", "");
                 std::string faultLedGroupPath =
                     instance.value("NVMeDriveFaultLEDGroupPath", "");
                 std::string locateLedGroupPath =
@@ -377,6 +386,9 @@ std::vector<phosphor::nvme::Nvme::NVMeConfig> Nvme::getNvmeConfig()
 
                 nvmeConfig.index = std::to_string(index);
                 nvmeConfig.busID = busID;
+                nvmeConfig.address = address;
+                nvmeConfig.channel = channel;
+                nvmeConfig.platform = platform;
                 nvmeConfig.faultLedGroupPath = faultLedGroupPath;
                 nvmeConfig.presentPin = presentPin;
                 nvmeConfig.pwrGoodPin = pwrGoodPin;
@@ -437,6 +449,92 @@ std::string Nvme::getGPIOValueOfNvme(const std::string& fullPath)
     return val;
 }
 
+#define MAX_SUPPORT_NVME 24
+#define NVME_PER_MUX 8
+#define MUX_SWITCH_BUS 12
+#define MUX_SWITCH_COMMAND 0x00
+#define MUX_SWITCH_ADDR 0x70
+#define CPLD_ADDR 0x40
+#define CPLD_CHECKBP_COMMAND 0x01
+#define CPLD_PRESENT_COMMAND 0x07
+#define CPLD_IFDET_COMMAND 0x09
+
+/*This function intends to test existence of NVMe driver via I2C.
+We can tell what kind of device is connected by reading driverPresent and
+driverIfdet.
+
+drivePresent  | driveIfdet  | Type
+-------------------------------------------
+      0       |      0      | SAS/SATA HDD
+-------------------------------------------
+      1       |      0      | NVMe SSD
+-------------------------------------------
+      1       |      1      | NC
+*/
+int getMihawkPresent(std::string nvmeDriverIndex)
+{
+    int val = 0;
+    int index = std::stoi(nvmeDriverIndex);
+    unsigned char checkBp = 0;
+    unsigned char present = 0;
+    unsigned char ifdet = 0;
+    unsigned char drivePresent = 0;
+    unsigned char driveIfdet = 0;
+    unsigned char muxNum = index / NVME_PER_MUX;
+    unsigned char muxChannel = index % NVME_PER_MUX;
+    char filename[20];
+    auto bus = phosphor::smbus::Smbus();
+
+    if (index > MAX_SUPPORT_NVME - 1)
+    {
+        std::cerr << "nvmeDriverIndex over restriction\n";
+        return 0;
+    }
+
+    int fd = bus.openI2cDev(MUX_SWITCH_BUS, filename, sizeof(filename), 0);
+    if (fd < 0)
+    {
+        std::cerr << "Failed to open CPLD\n";
+        return 0;
+    }
+
+    if (ioctl(fd, I2C_SLAVE_FORCE, MUX_SWITCH_ADDR) < 0)
+    {
+        std::cerr << "Failed to switch mux\n";
+        goto exit_getNvmePresent;
+    }
+    i2c_smbus_write_byte_data(fd, MUX_SWITCH_COMMAND, (0x01 << muxNum));
+
+    if (ioctl(fd, I2C_SLAVE_FORCE, CPLD_ADDR) < 0)
+    {
+        std::cerr << "Failed to set CPLD addr\n";
+        goto exit_getNvmePresent;
+    }
+
+    // Read CPLD_register byte for checking NVMe BD.
+    checkBp = i2c_smbus_read_byte_data(fd, CPLD_CHECKBP_COMMAND);
+
+    // Confirm whether to use NVME BD
+    if ((checkBp & 1) && !((checkBp >> 1) & 1) && !((checkBp >> 2) & 1))
+    {
+        present = i2c_smbus_read_byte_data(fd, CPLD_PRESENT_COMMAND);
+        ifdet = i2c_smbus_read_byte_data(fd, CPLD_IFDET_COMMAND);
+
+        drivePresent = (present >> muxChannel) & 0x01;
+        driveIfdet = (ifdet >> muxChannel) & 0x01;
+
+        // Check NVMe whether is present.
+        if ((drivePresent == 1) && (driveIfdet == 0))
+        {
+            val = 1;
+        }
+    }
+
+exit_getNvmePresent:
+    close(fd);
+    return val;
+}
+
 void Nvme::createNVMeInventory()
 {
     using Properties =
@@ -467,6 +565,7 @@ void Nvme::init()
 /** @brief Monitor NVMe drives every one second  */
 void Nvme::read()
 {
+    int mihawkPresent = 0;
     std::string devPresentPath;
     std::string devPwrGoodPath;
     std::string inventoryPath;
@@ -486,14 +585,23 @@ void Nvme::read()
 
         auto iter = nvmes.find(config.index);
 
-        if (getGPIOValueOfNvme(devPresentPath) == IS_PRESENT)
+        if (config.platform == "mihawk")
+        {
+            mihawkPresent = getMihawkPresent(config.index);
+        }
+
+        if (getGPIOValueOfNvme(devPresentPath) == IS_PRESENT ||
+            mihawkPresent == MIHAWK_PRESENT)
         {
             // Drive status is good, update value or create d-bus and update
             // value.
-            if (getGPIOValueOfNvme(devPwrGoodPath) == POWERGD)
+            if (getGPIOValueOfNvme(devPwrGoodPath) == POWERGD ||
+                mihawkPresent == MIHAWK_PRESENT)
             {
                 // get NVMe information through i2c by busID.
-                auto success = getNVMeInfobyBusID(config.busID, nvmeData);
+                auto success = getNVMeInfobyBusID(config.busID, config.address,
+                                                  config.channel, nvmeData,
+                                                  config.platform);
                 // can not find. create dbus
                 if (iter == nvmes.end())
                 {
