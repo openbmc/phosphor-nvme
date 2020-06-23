@@ -1,0 +1,8 @@
+Ok-To-Test+1: Jenkins <openbmc-ci-admin@ozlabs.org>
+Verified+1: Jenkins <openbmc-ci-admin@ozlabs.org>
+Code-Review+2: Benjamin Fair <benjaminfair@google.com>
+Submitted-by: George Hung <george.hung@quantatw.com>
+Submitted-at: Tue, 23 Jun 2020 02:23:04 +0000
+Reviewed-on: https://gerrit.openbmc-project.xyz/c/openbmc/phosphor-nvme/+/33902
+Project: openbmc/phosphor-nvme
+Branch: refs/heads/master
