@@ -49,12 +49,17 @@ namespace nvme
 using namespace std;
 using namespace phosphor::logging;
 
+void Nvme::setNvmeInventoryProperties_present(
+    bool present, const std::string& presentPath)
+{
+    util::SDBusPlus::setProperty(bus, INVENTORY_BUSNAME, presentPath,
+                                 ITEM_IFACE, "Present", present);
+}
+
 void Nvme::setNvmeInventoryProperties(
-    bool present, const phosphor::nvme::Nvme::NVMeData& nvmeData,
+    const phosphor::nvme::Nvme::NVMeData& nvmeData,
     const std::string& inventoryPath)
 {
-    util::SDBusPlus::setProperty(bus, INVENTORY_BUSNAME, inventoryPath,
-                                 ITEM_IFACE, "Present", present);
     util::SDBusPlus::setProperty(bus, INVENTORY_BUSNAME, inventoryPath,
                                  ASSET_IFACE, "Manufacturer", nvmeData.vendor);
     util::SDBusPlus::setProperty(bus, INVENTORY_BUSNAME, inventoryPath,
@@ -451,7 +456,29 @@ void Nvme::createNVMeInventory()
 
         obj = {{
             inventoryPath,
-            {{ITEM_IFACE, {}}, {NVME_STATUS_IFACE, {}}, {ASSET_IFACE, {}}},
+            {{NVME_STATUS_IFACE, {}}, {ASSET_IFACE, {}}},
+        }};
+        util::SDBusPlus::CallMethod(bus, INVENTORY_BUSNAME, INVENTORY_NAMESPACE,
+                                    INVENTORY_MANAGER_IFACE, "Notify", obj);
+    }
+}
+
+void Nvme::createNVMeInventory_present()
+{
+    using Properties = std::map<std::string, std::variant<std::string, bool>>;
+    using Interfaces = std::map<std::string, Properties>;
+
+    std::string presentPath;
+    std::map<sdbusplus::message::object_path, Interfaces> obj;
+
+    for (const auto config : configs)
+    {
+        presentPath =
+            "/system/chassis/motherboard/nvme" + config.index + "_prsnt";
+
+        obj = {{
+            presentPath,
+            {{ITEM_IFACE, {}}},
         }};
         util::SDBusPlus::CallMethod(bus, INVENTORY_BUSNAME, INVENTORY_NAMESPACE,
                                     INVENTORY_MANAGER_IFACE, "Notify", obj);
@@ -461,11 +488,13 @@ void Nvme::createNVMeInventory()
 void Nvme::init()
 {
     createNVMeInventory();
+    createNVMeInventory_present();
 }
 
 void Nvme::readNvmeData(NVMeConfig& config)
 {
     std::string inventoryPath = NVME_INVENTORY_PATH + config.index;
+    std::string presentPath = NVME_INVENTORY_PATH + config.index + "_prsnt";
     NVMeData nvmeData;
 
     // get NVMe information through i2c by busID.
@@ -483,7 +512,8 @@ void Nvme::readNvmeData(NVMeConfig& config)
             std::make_shared<phosphor::nvme::NvmeSSD>(bus, objPath.c_str());
         nvmes.emplace(config.index, nvmeSSD);
 
-        setNvmeInventoryProperties(true, nvmeData, inventoryPath);
+        setNvmeInventoryProperties(nvmeData, inventoryPath);
+        setNvmeInventoryProperties_present(true, presentPath);
         nvmeSSD->setSensorValueToDbus(nvmeData.sensorValue);
         nvmeSSD->setSensorThreshold(config.criticalHigh, config.criticalLow,
                                     config.maxValue, config.minValue,
@@ -494,7 +524,8 @@ void Nvme::readNvmeData(NVMeConfig& config)
     }
     else
     {
-        setNvmeInventoryProperties(true, nvmeData, inventoryPath);
+        setNvmeInventoryProperties(nvmeData, inventoryPath);
+        setNvmeInventoryProperties_present(true, presentPath);
         iter->second->setSensorValueToDbus(nvmeData.sensorValue);
         iter->second->checkSensorThreshold();
         setLEDsStatus(config, success, nvmeData);
@@ -507,6 +538,7 @@ void Nvme::read()
     std::string devPresentPath;
     std::string devPwrGoodPath;
     std::string inventoryPath;
+    std::string presentPath;
 
     static std::unordered_map<std::string, bool> isErrorPower;
 
@@ -515,6 +547,7 @@ void Nvme::read()
         NVMeData nvmeData;
 
         inventoryPath = NVME_INVENTORY_PATH + config.index;
+        presentPath = NVME_INVENTORY_PATH + config.index + "_prsnt";
 
         if (config.presentPin)
         {
@@ -534,7 +567,8 @@ void Nvme::read()
                              config.locateLedControllerPath, false);
 
                 nvmeData = NVMeData();
-                setNvmeInventoryProperties(false, nvmeData, inventoryPath);
+                setNvmeInventoryProperties(nvmeData, inventoryPath);
+                setNvmeInventoryProperties_present(false, presentPath);
                 nvmes.erase(config.index);
                 continue;
             }
@@ -557,7 +591,8 @@ void Nvme::read()
                                  config.locateLedControllerPath, false);
 
                     nvmeData = NVMeData();
-                    setNvmeInventoryProperties(false, nvmeData, inventoryPath);
+                    setNvmeInventoryProperties(nvmeData, inventoryPath);
+                    setNvmeInventoryProperties_present(false, presentPath);
                     nvmes.erase(config.index);
 
                     if (isErrorPower[config.index] != true)
