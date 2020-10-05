@@ -41,8 +41,8 @@ class SDBusPlus
         catch (const std::exception& e)
         {
             log<level::ERR>("Set properties fail.",
-                            entry("ERROR = %s", e.what()),
-                            entry("Object path = %s", objPath.c_str()));
+                            entry("ERROR=%s", e.what()),
+                            entry("objPath=%s", objPath.c_str()));
             return;
         }
     }
@@ -69,8 +69,8 @@ class SDBusPlus
         catch (const std::exception& e)
         {
             log<level::ERR>("Get properties fail.",
-                            entry("ERROR = %s", e.what()),
-                            entry("Object path = %s", objPath.c_str()));
+                            entry("ERROR=%s", e.what()),
+                            entry("objPath=%s", objPath.c_str()));
             return false;
         }
 
@@ -92,8 +92,8 @@ class SDBusPlus
         }
         catch (const std::exception& e)
         {
-            log<level::ERR>("Call method fail.", entry("ERROR = %s", e.what()),
-                            entry("Object path = %s", objPath.c_str()));
+            log<level::ERR>("Call method fail.", entry("ERROR=%s", e.what()),
+                            entry("objPath=%s", objPath.c_str()));
             return;
         }
     }
