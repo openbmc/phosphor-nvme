@@ -1,0 +1,1 @@
+option('nvme-pwr-ctrl', type: 'feature', description: 'Build NVMe Power Control')

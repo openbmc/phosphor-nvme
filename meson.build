@@ -55,3 +55,8 @@ configure_file(
   configuration: conf_data,
   install: true,
   install_dir: systemd.get_pkgconfig_variable('systemdsystemunitdir'))
+
+build_nvme_pwr_ctrl = get_option('nvme-pwr-ctrl')
+if not build_nvme_pwr_ctrl.disabled()
+  subdir('nvme-pwr-ctrl')
+endif

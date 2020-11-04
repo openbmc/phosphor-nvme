@@ -1,0 +1,66 @@
+[
+    {
+        "NVMeDrivePwrDis": "u2_0_pwr_dis",
+        "NVMeDrivePwrEn": "pwr_u2_0_en"
+    },
+    {
+        "NVMeDrivePwrDis": "u2_1_pwr_dis",
+        "NVMeDrivePwrEn": "pwr_u2_1_en"
+    },
+    {
+        "NVMeDrivePwrDis": "u2_2_pwr_dis",
+        "NVMeDrivePwrEn": "pwr_u2_2_en"
+    },
+    {
+        "NVMeDrivePwrDis": "u2_3_pwr_dis",
+        "NVMeDrivePwrEn": "pwr_u2_3_en"
+    },
+    {
+        "NVMeDrivePwrDis": "u2_4_pwr_dis",
+        "NVMeDrivePwrEn": "pwr_u2_4_en"
+    },
+    {
+        "NVMeDrivePwrDis": "u2_5_pwr_dis",
+        "NVMeDrivePwrEn": "pwr_u2_5_en"
+    },
+    {
+        "NVMeDrivePwrDis": "u2_6_pwr_dis",
+        "NVMeDrivePwrEn": "pwr_u2_6_en"
+    },
+    {
+        "NVMeDrivePwrDis": "u2_7_pwr_dis",
+        "NVMeDrivePwrEn": "pwr_u2_7_en"
+    },
+    {
+        "NVMeDrivePwrDis": "u2_8_pwr_dis",
+        "NVMeDrivePwrEn": "pwr_u2_8_en"
+    },
+    {
+        "NVMeDrivePwrDis": "u2_9_pwr_dis",
+        "NVMeDrivePwrEn": "pwr_u2_9_en"
+    },
+    {
+        "NVMeDrivePwrDis": "u2_10_pwr_dis",
+        "NVMeDrivePwrEn": "pwr_u2_10_en"
+    },
+    {
+        "NVMeDrivePwrDis": "u2_11_pwr_dis",
+        "NVMeDrivePwrEn": "pwr_u2_11_en"
+    },
+    {
+        "NVMeDrivePwrDis": "u2_12_pwr_dis",
+        "NVMeDrivePwrEn": "pwr_u2_12_en"
+    },
+    {
+        "NVMeDrivePwrDis": "u2_13_pwr_dis",
+        "NVMeDrivePwrEn": "pwr_u2_13_en"
+    },
+    {
+        "NVMeDrivePwrDis": "u2_14_pwr_dis",
+        "NVMeDrivePwrEn": "pwr_u2_14_en"
+    },
+    {
+        "NVMeDrivePwrDis": "u2_15_pwr_dis",
+        "NVMeDrivePwrEn": "pwr_u2_15_en"
+    }
+]
