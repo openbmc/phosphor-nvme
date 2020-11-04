@@ -55,3 +55,8 @@ configure_file(
   configuration: conf_data,
   install: true,
   install_dir: systemd.get_pkgconfig_variable('systemdsystemunitdir'))
+
+build_nvme_power_control = get_option('nvme-power-control')
+if not build_nvme_power_control.disabled()
+  subdir('nvme-power-control')
+endif
