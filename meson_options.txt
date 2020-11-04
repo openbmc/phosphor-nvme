@@ -1,0 +1,4 @@
+option('nvme-power-control', type: 'feature',
+    value : 'disabled',
+    description: 'Build NVMe Power Control',
+)
