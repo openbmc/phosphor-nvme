@@ -1,0 +1,66 @@
+[
+     {
+       "LineName": "u2_0_pwr_dis",
+       "DefaultGPIOValue": 0
+     },
+     {
+       "LineName": "pwr_u2_0_en",
+       "DefaultGPIOValue": 1
+     },
+     {
+       "LineName": "u2_1_pwr_dis",
+       "DefaultGPIOValue": 0
+     },
+     {
+       "LineName": "pwr_u2_1_en",
+       "DefaultGPIOValue": 1
+     },
+     {
+       "LineName": "u2_2_pwr_dis",
+       "DefaultGPIOValue": 0
+     },
+     {
+       "LineName": "pwr_u2_2_en",
+       "DefaultGPIOValue": 1
+     },
+     {
+       "LineName": "u2_3_pwr_dis",
+       "DefaultGPIOValue": 0
+     },
+     {
+       "LineName": "pwr_u2_3_en",
+       "DefaultGPIOValue": 1
+     },
+     {
+       "LineName": "u2_4_pwr_dis",
+       "DefaultGPIOValue": 0
+     },
+     {
+       "LineName": "pwr_u2_4_en",
+       "DefaultGPIOValue": 1
+     },
+     {
+       "LineName": "u2_5_pwr_dis",
+       "DefaultGPIOValue": 0
+     },
+     {
+       "LineName": "pwr_u2_5_en",
+       "DefaultGPIOValue": 1
+     },
+     {
+       "LineName": "u2_6_pwr_dis",
+       "DefaultGPIOValue": 0
+     },
+     {
+       "LineName": "pwr_u2_6_en",
+       "DefaultGPIOValue": 1
+     },
+     {
+       "LineName": "u2_7_pwr_dis",
+       "DefaultGPIOValue": 0
+     },
+     {
+       "LineName": "pwr_u2_7_en",
+       "DefaultGPIOValue": 1
+     }
+]

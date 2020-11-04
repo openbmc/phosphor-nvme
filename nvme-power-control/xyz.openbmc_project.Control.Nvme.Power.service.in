@@ -1,0 +1,13 @@
+[Unit]
+Description=NVMe Power Control
+
+[Service]
+Restart=on-failure
+RestartSec=3
+StartLimitBurst=10
+ExecStart=@bindir@/nvme_power_control
+Type=dbus
+BusName=xyz.openbmc_project.Control.Nvme.Power
+
+[Install]
+WantedBy=multi-user.target
