@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "828173fb_4ee44f13",
+        "filename": "nvme_manager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1000233
+      },
+      "writtenOn": "2021-01-08T01:05:02Z",
+      "side": 1,
+      "message": "should explicitly be reinterpret_cast or static_cast (sorry for not catching this before)",
+      "range": {
+        "startLine": 263,
+        "startChar": 23,
+        "endLine": 263,
+        "endChar": 29
+      },
+      "revId": "11957d23e90dde16096cdc065318f119d27b6d37",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    }
+  ]
+}
