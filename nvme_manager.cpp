@@ -609,8 +609,7 @@ void Nvme::read()
                                  config.locateLedControllerPath, false);
 
                     nvmeData = NVMeData();
-                    setNvmeInventoryProperties(false, nvmeData, inventoryPath);
-                    nvmes.erase(config.index);
+                    setNvmeInventoryProperties(true, nvmeData, inventoryPath);
 
                     if (isErrorPower[config.index] != true)
                     {
@@ -623,6 +622,8 @@ void Nvme::read()
 
                         isErrorPower[config.index] = true;
                     }
+
+                    readNvmeData(config);
                     continue;
                 }
             }
