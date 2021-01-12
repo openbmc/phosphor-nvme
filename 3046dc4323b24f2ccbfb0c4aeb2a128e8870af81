@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "61b2a373_e77e41cb",
+        "filename": "nvme_manager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 625,
+      "author": {
+        "id": 1000388
+      },
+      "writtenOn": "2021-01-12T17:15:50Z",
+      "side": 1,
+      "message": "Maybe put a comment here saying that we are doing a read so that we can report an invalid temperature (to let the thermal loop know that the drive\u0027s sensor reading is invalid).",
+      "revId": "3046dc4323b24f2ccbfb0c4aeb2a128e8870af81",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    }
+  ]
+}
