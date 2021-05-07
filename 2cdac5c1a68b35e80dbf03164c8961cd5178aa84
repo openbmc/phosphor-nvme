@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b9f3d0ce_bb980c76",
+        "filename": "nvme-pwr-ctrl/nvme_pwr_ctrl.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000357
+      },
+      "writtenOn": "2021-05-07T08:22:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3179dca2_9b863a28",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 23
+      },
+      "revId": "2cdac5c1a68b35e80dbf03164c8961cd5178aa84",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30afbd04_fc6e2991",
         "filename": "nvme-pwr-ctrl/nvme_pwr_ctrl.cpp",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2020-11-19T02:05:38Z",
       "side": 1,
       "message": "I had to recently create a discrete IPMI sensor and William suggested that I overload the property\u0027s getter function instead - then in the getter function, create a matcher that waits for the systemd to finish and determine its status.\n\nThe benefit of doing it this way is that we can make the systemd call blocking (until it finishes) and report its status. Also, it makes it so that we can toggle both the assert and deassert event via 0x01 instead of having to change the `ipmitool raw` command (0x10 for assert, 0x03 for deassert, etc.)\n\nSample code of how the matcher would look like: https://github.com/openbmc/phosphor-ipmi-flash/blob/master/bmc/general_systemd.cpp#L45",
+      "range": {
+        "startLine": 171,
+        "startChar": 39,
+        "endLine": 174,
+        "endChar": 60
+      },
+      "revId": "2cdac5c1a68b35e80dbf03164c8961cd5178aa84",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b3e2b7d_9dac89b8",
+        "filename": "nvme-pwr-ctrl/nvme_pwr_ctrl.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1000357
+      },
+      "writtenOn": "2021-05-07T08:22:47Z",
+      "side": 1,
+      "message": "Sorry, I\u0027m not quite understanding how to change like what you suggested, but I custom the register_property method to set GPIO value and property value by boolean value instead of the event string value, maybe it\u0027s little close to what you said to toggle via 0x01/0x00.\n\nBTW, due to this change, it also needs to modify the nvme power sensors event offset type as boolean instead of the string for gbs-ipmi-sensor.yaml",
+      "parentUuid": "30afbd04_fc6e2991",
       "range": {
         "startLine": 171,
         "startChar": 39,
