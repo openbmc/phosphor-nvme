@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7790821a_a70ed2ae",
+        "filename": "nvme_manager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1000388
+      },
+      "writtenOn": "2021-05-19T18:02:05Z",
+      "side": 1,
+      "message": "I\u0027m noticing that we\u0027re inheriting the includes from the nvmes.hpp as well, I\u0027ll clean these up in a following commit.",
+      "parentUuid": "af64ebc2_d8c42472",
+      "range": {
+        "startLine": 221,
+        "startChar": 27,
+        "endLine": 221,
+        "endChar": 35
+      },
+      "revId": "117076ca89eac768f94c4fba873496d9221e2243",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f58953f4_41e7a7aa",
         "filename": "nvmes.cpp",
         "patchSetId": 1
@@ -86,6 +110,24 @@
       "revId": "117076ca89eac768f94c4fba873496d9221e2243",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9269c28f_26edf00b",
+        "filename": "nvmes.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000388
+      },
+      "writtenOn": "2021-05-19T18:02:05Z",
+      "side": 1,
+      "message": "Hmm yes you\u0027re right:\n\n```\nauto Critical::criticalAlarmLow(bool value,\n                                         bool skipSignal) -\u003e\n        bool\n{\n    if (_criticalAlarmLow !\u003d value)\n    {\n        _criticalAlarmLow \u003d value;\n        if (!skipSignal)\n        {\n            _xyz_openbmc_project_Sensor_Threshold_Critical_interface.property_changed(\"CriticalAlarmLow\");\n        }\n    }\n\n    return _criticalAlarmLow;\n}\n\nauto Critical::criticalAlarmLow(bool val) -\u003e\n        bool\n{\n    return criticalAlarmLow(val, false);\n}\n```\n\nI was worried that this could somehow result in the performance degradation we were seeing with https://gerrit.openbmc-project.xyz/c/openbmc/phosphor-nvme/+/41727 when we were doing a sdbusplus set, even though it \"should\" have not done anything due to the value being the same compared to the previous value.\n\nHowever, since this doesn\u0027t require a sdbusplus call, and instead just calling the interface directly, I don\u0027t think it\u0027s the same issue and we can probably drop these checks without performance hit.",
+      "parentUuid": "379fd26b_64736b2c",
+      "revId": "117076ca89eac768f94c4fba873496d9221e2243",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
     }
   ]
 }
