@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f58953f4_41e7a7aa",
+        "filename": "nvmes.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000388
+      },
+      "writtenOn": "2021-05-19T17:18:28Z",
+      "side": 1,
+      "message": "I feel we should be naming these to indicate that these are past variables.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 52
+      },
+      "revId": "117076ca89eac768f94c4fba873496d9221e2243",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    }
+  ]
+}
