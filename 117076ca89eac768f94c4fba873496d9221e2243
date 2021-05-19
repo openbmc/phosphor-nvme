@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "af64ebc2_d8c42472",
+        "filename": "nvme_manager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1000233
+      },
+      "writtenOn": "2021-05-19T17:30:09Z",
+      "side": 1,
+      "message": "Doesn\u0027t need to be fixed in this patch, but this cast should be C++ style (static_cast or reinterpret_cast) rather than C style",
+      "range": {
+        "startLine": 221,
+        "startChar": 27,
+        "endLine": 221,
+        "endChar": 35
+      },
+      "revId": "117076ca89eac768f94c4fba873496d9221e2243",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f58953f4_41e7a7aa",
         "filename": "nvmes.cpp",
         "patchSetId": 1
@@ -46,6 +69,23 @@
       "revId": "117076ca89eac768f94c4fba873496d9221e2243",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "379fd26b_64736b2c",
+        "filename": "nvmes.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000233
+      },
+      "writtenOn": "2021-05-19T17:30:09Z",
+      "side": 1,
+      "message": "Doesn\u0027t the D-Bus wrapper already avoid sending new property signals if the value hasn\u0027t changed?",
+      "revId": "117076ca89eac768f94c4fba873496d9221e2243",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
     }
   ]
 }
