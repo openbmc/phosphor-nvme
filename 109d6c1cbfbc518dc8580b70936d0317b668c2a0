@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4bf2a16d_3231b036",
+        "filename": "nvmes.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000388
+      },
+      "writtenOn": "2021-05-25T23:58:11Z",
+      "side": 1,
+      "message": "Should these conditionals match what\u0027s used above in 24, 26, 28, 30? and if so, (since we\u0027re using the same conditional 3 times), should we just store the bools and reuse them?",
+      "range": {
+        "startLine": 32,
+        "startChar": 35,
+        "endLine": 32,
+        "endChar": 56
+      },
+      "revId": "109d6c1cbfbc518dc8580b70936d0317b668c2a0",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    }
+  ]
+}
