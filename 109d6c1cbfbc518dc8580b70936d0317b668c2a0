@@ -46,6 +46,30 @@
       "revId": "109d6c1cbfbc518dc8580b70936d0317b668c2a0",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "754c19ec_4c5af0b8",
+        "filename": "nvmes.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000388
+      },
+      "writtenOn": "2021-05-26T16:15:18Z",
+      "side": 1,
+      "message": "What I meant was, could we store `bool criticalHighAlarm \u003d value \u003e\u003d criticalHigh` at the top? and then use it throughout the function - it\u0027s a nit, since the compiler probably will optimize? but this may be easier to read possibly.\n\nI was curious as to why line 24/26/28/30 used \u003e and \u003c instead of \u003e\u003d and \u003c\u003d here though (and maybe that\u0027s what you were explaining here?)",
+      "parentUuid": "38454710_a961e4e1",
+      "range": {
+        "startLine": 32,
+        "startChar": 35,
+        "endLine": 32,
+        "endChar": 56
+      },
+      "revId": "109d6c1cbfbc518dc8580b70936d0317b668c2a0",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
     }
   ]
 }
