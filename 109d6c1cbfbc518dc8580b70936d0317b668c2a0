@@ -22,6 +22,30 @@
       "revId": "109d6c1cbfbc518dc8580b70936d0317b668c2a0",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38454710_a961e4e1",
+        "filename": "nvmes.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000357
+      },
+      "writtenOn": "2021-05-26T09:25:21Z",
+      "side": 1,
+      "message": "They are different, line 24/26/28/30 are belong to the original threshold alarm property change and for the new threshold alarm asserted/de-asserted signals, we need to send these signals additionally for phosphor-sel-logger.\n\nref: https://github.com/openbmc/phosphor-hwmon/blob/e32ce16bb6cc527b2e46b6e90ef7ac47404da173/thresholds.hpp#L84",
+      "parentUuid": "4bf2a16d_3231b036",
+      "range": {
+        "startLine": 32,
+        "startChar": 35,
+        "endLine": 32,
+        "endChar": 56
+      },
+      "revId": "109d6c1cbfbc518dc8580b70936d0317b668c2a0",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
     }
   ]
 }
