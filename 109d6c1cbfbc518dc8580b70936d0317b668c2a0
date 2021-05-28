@@ -94,6 +94,30 @@
       "revId": "109d6c1cbfbc518dc8580b70936d0317b668c2a0",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70df2c24_7498d10a",
+        "filename": "nvmes.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000388
+      },
+      "writtenOn": "2021-05-28T00:24:10Z",
+      "side": 1,
+      "message": "Sorry for the confusion. Since the conditionals are not the same (greater than vs. greater than and equals), maybe this is not what we want. Looking at patchset 1 and patchset 2, if the equals is important, then the meaning of the code changed as we no longer check for equals in line 36.\n\nI think it makes sense to have a precomputed boolean if all 3 conditionals can be the same, but if it\u0027s only 2 (if we want to go with this, we\u0027ll have to change the boolean usage to keep the same meaning) I\u0027m not sure if it\u0027s much better.\n\nMaybe others can chime in?",
+      "parentUuid": "31ecda1f_491af9dd",
+      "range": {
+        "startLine": 32,
+        "startChar": 35,
+        "endLine": 32,
+        "endChar": 56
+      },
+      "revId": "109d6c1cbfbc518dc8580b70936d0317b668c2a0",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
     }
   ]
 }
