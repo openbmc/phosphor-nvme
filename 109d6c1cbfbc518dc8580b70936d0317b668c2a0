@@ -118,6 +118,30 @@
       "revId": "109d6c1cbfbc518dc8580b70936d0317b668c2a0",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9ab3028_fde730fd",
+        "filename": "nvmes.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000357
+      },
+      "writtenOn": "2021-05-31T10:18:40Z",
+      "side": 1,
+      "message": "Is the current question about greater than or greater than and equals ? if so, maybe we can follow the phosphor-hwmon, it should be greater than and equals. What do you think ?",
+      "parentUuid": "70df2c24_7498d10a",
+      "range": {
+        "startLine": 32,
+        "startChar": 35,
+        "endLine": 32,
+        "endChar": 56
+      },
+      "revId": "109d6c1cbfbc518dc8580b70936d0317b668c2a0",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
     }
   ]
 }
