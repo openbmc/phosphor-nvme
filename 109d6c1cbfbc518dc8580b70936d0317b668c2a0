@@ -142,6 +142,30 @@
       "revId": "109d6c1cbfbc518dc8580b70936d0317b668c2a0",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25100511_768f612a",
+        "filename": "nvmes.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000388
+      },
+      "writtenOn": "2021-06-03T05:00:25Z",
+      "side": 1,
+      "message": "Yes, it seems hwmon is greater / less than and equal to.\n\nLet\u0027s match that and make all the conditional the same so we can use it at all 3 places.",
+      "parentUuid": "b9ab3028_fde730fd",
+      "range": {
+        "startLine": 32,
+        "startChar": 35,
+        "endLine": 32,
+        "endChar": 56
+      },
+      "revId": "109d6c1cbfbc518dc8580b70936d0317b668c2a0",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
     }
   ]
 }
