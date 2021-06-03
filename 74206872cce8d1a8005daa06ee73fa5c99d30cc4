@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a35486dd_78dbf93a",
+        "filename": "nvmes.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000388
+      },
+      "writtenOn": "2021-06-03T23:11:26Z",
+      "side": 1,
+      "message": "can\u0027t we replace these conditional with the bool now since it\u0027s the same? criticalAlarmHigh here for example",
+      "range": {
+        "startLine": 38,
+        "startChar": 12,
+        "endLine": 38,
+        "endChar": 33
+      },
+      "revId": "74206872cce8d1a8005daa06ee73fa5c99d30cc4",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c707a456_3d90db79",
+        "filename": "nvmes.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000388
+      },
+      "writtenOn": "2021-06-03T23:11:26Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 49,
+        "startChar": 11,
+        "endLine": 71,
+        "endChar": 32
+      },
+      "revId": "74206872cce8d1a8005daa06ee73fa5c99d30cc4",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    }
+  ]
+}
