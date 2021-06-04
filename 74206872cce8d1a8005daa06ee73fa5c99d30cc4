@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a29e2ad0_94bcfd8e",
+        "filename": "nvmes.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000357
+      },
+      "writtenOn": "2021-06-04T02:11:15Z",
+      "side": 1,
+      "message": "Sorry, I didn\u0027t notice that and now I replace these conditional with bool.",
+      "parentUuid": "a35486dd_78dbf93a",
+      "range": {
+        "startLine": 38,
+        "startChar": 12,
+        "endLine": 38,
+        "endChar": 33
+      },
+      "revId": "74206872cce8d1a8005daa06ee73fa5c99d30cc4",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c707a456_3d90db79",
         "filename": "nvmes.cpp",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2021-06-03T23:11:26Z",
       "side": 1,
       "message": "same here",
+      "range": {
+        "startLine": 49,
+        "startChar": 11,
+        "endLine": 71,
+        "endChar": 32
+      },
+      "revId": "74206872cce8d1a8005daa06ee73fa5c99d30cc4",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfa29642_558e0a60",
+        "filename": "nvmes.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000357
+      },
+      "writtenOn": "2021-06-04T02:11:15Z",
+      "side": 1,
+      "message": "Also updated.",
+      "parentUuid": "c707a456_3d90db79",
       "range": {
         "startLine": 49,
         "startChar": 11,
