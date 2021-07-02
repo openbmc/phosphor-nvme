@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "0d477427_a841fa6f",
+        "filename": "nvme_manager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1000388
+      },
+      "writtenOn": "2021-07-02T18:02:41Z",
+      "side": 1,
+      "message": "Got it.",
+      "parentUuid": "89e027bb_9847a6b8",
+      "range": {
+        "startLine": 550,
+        "startChar": 0,
+        "endLine": 550,
+        "endChar": 67
+      },
+      "revId": "be3439961f5aedbff56d30bae4cd64b02e6125ae",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1b04dcb2_84698458",
         "filename": "nvme_manager.cpp",
         "patchSetId": 1
@@ -93,6 +117,30 @@
       "revId": "be3439961f5aedbff56d30bae4cd64b02e6125ae",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdafacb1_0a01c86a",
+        "filename": "nvme_manager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1000388
+      },
+      "writtenOn": "2021-07-02T18:02:41Z",
+      "side": 1,
+      "message": "Never mind, taking another look, I see that we only want to set the sensor threshold only when necessary (when there is WCTemp that we read). I think this is fine as is.",
+      "parentUuid": "5203ce6b_0ad35262",
+      "range": {
+        "startLine": 559,
+        "startChar": 0,
+        "endLine": 571,
+        "endChar": 49
+      },
+      "revId": "be3439961f5aedbff56d30bae4cd64b02e6125ae",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
     }
   ]
 }
