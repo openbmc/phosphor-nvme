@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "543d5ab6_e4209feb",
+        "filename": "nvme_manager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1000388
+      },
+      "writtenOn": "2021-07-02T04:21:28Z",
+      "side": 1,
+      "message": "Do we not have to set this in the else statement as well?",
+      "range": {
+        "startLine": 550,
+        "startChar": 0,
+        "endLine": 550,
+        "endChar": 67
+      },
+      "revId": "be3439961f5aedbff56d30bae4cd64b02e6125ae",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b04dcb2_84698458",
+        "filename": "nvme_manager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1000388
+      },
+      "writtenOn": "2021-07-02T04:21:28Z",
+      "side": 1,
+      "message": "This almost looks likes it it could be factored out (compared to the if statement)",
+      "range": {
+        "startLine": 559,
+        "startChar": 0,
+        "endLine": 571,
+        "endChar": 49
+      },
+      "revId": "be3439961f5aedbff56d30bae4cd64b02e6125ae",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    }
+  ]
+}
