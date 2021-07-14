@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "17efcbac_5db10322",
+        "filename": "nvme_manager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000388
+      },
+      "writtenOn": "2021-07-14T16:56:51Z",
+      "side": 1,
+      "message": "nit: prefer camelCase: preSerial, preSmartWarning, preStatusFlags",
+      "range": {
+        "startLine": 65,
+        "startChar": 48,
+        "endLine": 67,
+        "endChar": 64
+      },
+      "revId": "e77ea2189615a33f635768ba3dc7fdb1e65d1f9a",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9fcf5826_ae06d4cf",
+        "filename": "nvme_manager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1000388
+      },
+      "writtenOn": "2021-07-14T16:56:51Z",
+      "side": 1,
+      "message": "I wonder if there was a particular reason why we were hardcoding presence to true here. Perhaps George has some context",
+      "range": {
+        "startLine": 562,
+        "startChar": 0,
+        "endLine": 579,
+        "endChar": 77
+      },
+      "revId": "e77ea2189615a33f635768ba3dc7fdb1e65d1f9a",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    }
+  ]
+}
