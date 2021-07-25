@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b914c1a3_0ee5eec5",
+        "filename": "nvme_manager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000994
+      },
+      "writtenOn": "2021-07-25T15:29:52Z",
+      "side": 1,
+      "message": "Ok, I will edit in patchset #2",
+      "parentUuid": "17efcbac_5db10322",
+      "range": {
+        "startLine": 65,
+        "startChar": 48,
+        "endLine": 67,
+        "endChar": 64
+      },
+      "revId": "e77ea2189615a33f635768ba3dc7fdb1e65d1f9a",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9fcf5826_ae06d4cf",
         "filename": "nvme_manager.cpp",
         "patchSetId": 1
@@ -60,6 +84,30 @@
       "side": 1,
       "message": "The present parameter means whether the nvme SSD is plugged physically, not smbus command executed successfully, thus I think it should be set as true.",
       "parentUuid": "9fcf5826_ae06d4cf",
+      "range": {
+        "startLine": 562,
+        "startChar": 0,
+        "endLine": 579,
+        "endChar": 77
+      },
+      "revId": "e77ea2189615a33f635768ba3dc7fdb1e65d1f9a",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5de54906_09c71767",
+        "filename": "nvme_manager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1000994
+      },
+      "writtenOn": "2021-07-25T15:29:52Z",
+      "side": 1,
+      "message": "Ok, I will modify in patchset #2",
+      "parentUuid": "11df46ba_702cb781",
       "range": {
         "startLine": 562,
         "startChar": 0,
