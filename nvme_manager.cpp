@@ -330,7 +330,12 @@ bool Nvme::getNVMeInfobyBusID(int busID,
 
         for (int i = 0; i < rx_len; i++)
         {
-            if (rsp_data_vpd[i] != ' ')
+            // Only accept digits/letters and subset of punctuation characters.
+            if ((rsp_data_vpd[i] >= '0' && rsp_data_vpd[i] <= '9') ||
+                (rsp_data_vpd[i] >= 'A' && rsp_data_vpd[i] <= 'Z') ||
+                (rsp_data_vpd[i] >= 'a' && rsp_data_vpd[i] <= 'z') ||
+                (rsp_data_vpd[i] == '+' || rsp_data_vpd[i] == '-' ||
+                 rsp_data_vpd[i] == '.' || rsp_data_vpd[i] == '_'))
                 nvmeData.modelNumber += static_cast<char>(rsp_data_vpd[i]);
         }
 
