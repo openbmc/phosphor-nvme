@@ -330,7 +330,10 @@ bool Nvme::getNVMeInfobyBusID(int busID,
 
         for (int i = 0; i < rx_len; i++)
         {
-            if (rsp_data_vpd[i] != ' ')
+            // Only accept digits/letters/punctuation characters.
+            // In the ASCII table, '!' (0x33) and '~' (0x126) are the boundaries
+            // for the characters we're looking for.
+            if (rsp_data_vpd[i] >= '!' && rsp_data_vpd[i] <= '~')
                 nvmeData.modelNumber += static_cast<char>(rsp_data_vpd[i]);
         }
 
