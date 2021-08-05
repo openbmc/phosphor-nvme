@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fb2d3d73_4d0c9a24",
+        "filename": "nvme_manager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1000233
+      },
+      "writtenOn": "2021-08-05T18:55:10Z",
+      "side": 1,
+      "message": "Can you use \u0027!\u0027 and \u0027~\u0027 instead so it\u0027s more obvious what this does?",
+      "range": {
+        "startLine": 334,
+        "startChar": 35,
+        "endLine": 334,
+        "endChar": 37
+      },
+      "revId": "fbee32d3de2282b315965a89594c47395222e2ea",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    }
+  ]
+}
