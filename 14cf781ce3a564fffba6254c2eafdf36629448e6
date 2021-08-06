@@ -22,6 +22,53 @@
       "revId": "14cf781ce3a564fffba6254c2eafdf36629448e6",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70e86f65_fa7091c7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000388
+      },
+      "writtenOn": "2021-08-06T18:56:29Z",
+      "side": 1,
+      "message": "Never mind, the failure I\u0027m seeing, I still see even with the limited sets of punctuations so I don\u0027t think that is the cause for my bug. I will do one more testing\n\nEDIT: Realized that we have the same bug at serialNumber, testing again with ! to ~ subset of ASCII",
+      "parentUuid": "281b7931_4988a8c1",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 60
+      },
+      "revId": "14cf781ce3a564fffba6254c2eafdf36629448e6",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "084a707b_6b5e4803",
+        "filename": "nvme_manager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1000388
+      },
+      "writtenOn": "2021-08-06T18:56:29Z",
+      "side": 1,
+      "message": "Just realized we have this here too, which we should also limit.",
+      "range": {
+        "startLine": 303,
+        "startChar": 0,
+        "endLine": 303,
+        "endChar": 46
+      },
+      "revId": "14cf781ce3a564fffba6254c2eafdf36629448e6",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
     }
   ]
 }
