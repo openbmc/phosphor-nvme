@@ -44,8 +44,8 @@ static constexpr int MODELNUMBER_END_INDEX = 85;
 
 static constexpr const int TEMPERATURE_SENSOR_FAILURE = 0x81;
 
-static std::map<std::string, std::string> map_vendor = {{"80 86", "Intel"},
-                                                        {"14 4d", "Samsung"}};
+static std::map<std::string, std::string> map_vendor = {
+    {"80 86", "Intel"}, {"1e f", "Kioxia"}, {"14 4d", "Samsung"}};
 
 namespace fs = std::filesystem;
 
