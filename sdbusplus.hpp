@@ -20,10 +20,10 @@ class SDBusPlus
 {
   public:
     template <typename T>
-    static auto
-        setProperty(sdbusplus::bus::bus& bus, const std::string& busName,
-                    const std::string& objPath, const std::string& interface,
-                    const std::string& property, const T& value)
+    static auto setProperty(sdbusplus::bus_t& bus, const std::string& busName,
+                            const std::string& objPath,
+                            const std::string& interface,
+                            const std::string& property, const T& value)
     {
         std::variant<T> data = value;
 
@@ -47,10 +47,10 @@ class SDBusPlus
     }
 
     template <typename Property>
-    static auto
-        getProperty(sdbusplus::bus::bus& bus, const std::string& busName,
-                    const std::string& objPath, const std::string& interface,
-                    const std::string& property)
+    static auto getProperty(sdbusplus::bus_t& bus, const std::string& busName,
+                            const std::string& objPath,
+                            const std::string& interface,
+                            const std::string& property)
     {
         auto methodCall = bus.new_method_call(busName.c_str(), objPath.c_str(),
                                               DBUS_PROPERTY_IFACE, "Get");
@@ -76,7 +76,7 @@ class SDBusPlus
     }
 
     template <typename... Args>
-    static auto CallMethod(sdbusplus::bus::bus& bus, const std::string& busName,
+    static auto CallMethod(sdbusplus::bus_t& bus, const std::string& busName,
                            const std::string& objPath,
                            const std::string& interface,
                            const std::string& method, Args&&... args)

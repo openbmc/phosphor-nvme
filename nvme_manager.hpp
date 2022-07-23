@@ -35,7 +35,7 @@ class Nvme
      * @param[in] bus     - Handle to system dbus
      * @param[in] objPath - The dbus path of nvme
      */
-    Nvme(sdbusplus::bus::bus& bus) :
+    Nvme(sdbusplus::bus_t& bus) :
         bus(bus), _event(sdeventplus::Event::get_default()),
         _timer(_event, std::bind(&Nvme::read, this))
     {
@@ -134,7 +134,7 @@ class Nvme
 
   private:
     /** @brief sdbusplus bus client connection. */
-    sdbusplus::bus::bus& bus;
+    sdbusplus::bus_t& bus;
     /** @brief the Event Loop structure */
     sdeventplus::Event _event;
     /** @brief Read Timer */

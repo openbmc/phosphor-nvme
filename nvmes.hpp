@@ -18,9 +18,8 @@ using CriticalInterface =
 using WarningInterface =
     sdbusplus::xyz::openbmc_project::Sensor::Threshold::server::Warning;
 
-using NvmeIfaces =
-    sdbusplus::server::object::object<ValueIface, CriticalInterface,
-                                      WarningInterface>;
+using NvmeIfaces = sdbusplus::server::object_t<ValueIface, CriticalInterface,
+                                               WarningInterface>;
 
 class NvmeSSD : public NvmeIfaces
 {
@@ -37,7 +36,7 @@ class NvmeSSD : public NvmeIfaces
      * @param[in] bus     - Handle to system dbus
      * @param[in] objPath - The Dbus path of nvme
      */
-    NvmeSSD(sdbusplus::bus::bus& bus, const char* objPath) :
+    NvmeSSD(sdbusplus::bus_t& bus, const char* objPath) :
         NvmeIfaces(bus, objPath), bus(bus)
     {
         ValueIface::unit(Unit::DegreesC);
@@ -54,7 +53,7 @@ class NvmeSSD : public NvmeIfaces
     void setSensorMaxMin(int8_t maxValue, int8_t minValue);
 
   private:
-    sdbusplus::bus::bus& bus;
+    sdbusplus::bus_t& bus;
 };
 } // namespace nvme
 } // namespace phosphor

@@ -13,7 +13,7 @@ using namespace phosphor::logging;
 int main(void)
 {
 
-    sdbusplus::bus::bus bus = sdbusplus::bus::new_default();
+    sdbusplus::bus_t bus = sdbusplus::bus::new_default();
 
     sd_event* event = nullptr;
     auto eventDeleter = [](sd_event* e) { e = sd_event_unref(e); };
@@ -25,7 +25,7 @@ int main(void)
     // attach bus to this event loop
     bus.attach_event(sdEvent.get(), SD_EVENT_PRIORITY_NORMAL);
 
-    sdbusplus::server::manager::manager objManager(bus, NVME_OBJ_PATH_ROOT);
+    sdbusplus::server::manager_t objManager(bus, NVME_OBJ_PATH_ROOT);
 
     phosphor::nvme::Nvme objMgr(bus);
 
