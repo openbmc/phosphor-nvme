@@ -4,6 +4,7 @@
 #include <xyz/openbmc_project/Sensor/Threshold/Critical/server.hpp>
 #include <xyz/openbmc_project/Sensor/Threshold/Warning/server.hpp>
 #include <xyz/openbmc_project/Sensor/Value/server.hpp>
+#include <xyz/openbmc_project/State/Decorator/Availability/server.hpp>
 
 namespace phosphor
 {
@@ -18,8 +19,11 @@ using CriticalInterface =
 using WarningInterface =
     sdbusplus::xyz::openbmc_project::Sensor::Threshold::server::Warning;
 
+using AvailabilityInterface =
+    sdbusplus::xyz::openbmc_project::State::Decorator::server::Availability;
+
 using NvmeIfaces = sdbusplus::server::object_t<ValueIface, CriticalInterface,
-                                               WarningInterface>;
+                                               WarningInterface, AvailabilityInterface>;
 
 class NvmeSSD : public NvmeIfaces
 {
@@ -51,6 +55,8 @@ class NvmeSSD : public NvmeIfaces
                             int8_t warningHigh, int8_t warningLow);
     /** @brief Set Sensor Max/Min value to D-bus at beginning */
     void setSensorMaxMin(int8_t maxValue, int8_t minValue);
+    /** @brief Set Sensor Availability to D-bus */
+    void setSensorAvailability(bool avail);
 
   private:
     sdbusplus::bus_t& bus;

@@ -672,6 +672,8 @@ void Nvme::read()
         // (To make thermal loop know that the sensor reading
         //  is invalid).
         readNvmeData(config);
+        nvmes.find(config.index)->second->setSensorAvailability(
+            (pwrGoodPinValStr == POWERGD) ? true : false);
     }
 }
 } // namespace nvme

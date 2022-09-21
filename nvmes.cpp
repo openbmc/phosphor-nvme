@@ -100,5 +100,10 @@ void NvmeSSD::setSensorValueToDbus(const int8_t value)
     ValueIface::value(value);
 }
 
+void NvmeSSD::setSensorAvailability(bool avail)
+{
+    AvailabilityInterface::available(avail);
+}
+
 } // namespace nvme
 } // namespace phosphor
