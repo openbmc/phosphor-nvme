@@ -607,77 +607,71 @@ void Nvme::read()
         NVMeData nvmeData;
 
         inventoryPath = NVME_INVENTORY_PATH + config.index;
+        devPresentPath =
+            GPIO_BASE_PATH + std::to_string(config.presentPin) + "/value";
+        devPwrGoodPath =
+            GPIO_BASE_PATH + std::to_string(config.pwrGoodPin) + "/value";
 
-        if (config.presentPin)
+        auto presentPinValStr = (config.presentPin)
+                                    ? getGPIOValueOfNvme(devPresentPath)
+                                    : IS_PRESENT;
+        auto pwrGoodPinValStr =
+            (config.pwrGoodPin) ? getGPIOValueOfNvme(devPwrGoodPath) : POWERGD;
+
+        if (presentPinValStr != IS_PRESENT)
         {
-            devPresentPath =
-                GPIO_BASE_PATH + std::to_string(config.presentPin) + "/value";
+            // Drive not present, remove nvme d-bus path ,
+            // clean all properties in inventory
+            // and turn off fault and locate LED
 
-            if (getGPIOValueOfNvme(devPresentPath) != IS_PRESENT)
+            setFaultLED(config.locateLedGroupPath, config.faultLedGroupPath,
+                        false);
+            setLocateLED(config.locateLedGroupPath,
+                         config.locateLedControllerBusName,
+                         config.locateLedControllerPath, false);
+
+            nvmeData = NVMeData();
+            setNvmeInventoryProperties(config, false, nvmeData, inventoryPath);
+            nvmes.erase(config.index);
+            continue;
+        }
+
+        if (pwrGoodPinValStr != POWERGD)
+        {
+            // IFDET should be used to provide the final say
+            // in SSD's presence - IFDET showing SSD is present
+            // but the power is off (if the drive is plugged in)
+            // is a valid state.
+
+            setFaultLED(config.locateLedGroupPath, config.faultLedGroupPath,
+                        true);
+            setLocateLED(config.locateLedGroupPath,
+                         config.locateLedControllerBusName,
+                         config.locateLedControllerPath, false);
+
+            nvmeData = NVMeData();
+            setNvmeInventoryProperties(config, true, nvmeData, inventoryPath);
+
+            if (isErrorPower[config.index] != true)
             {
-                // Drive not present, remove nvme d-bus path ,
-                // clean all properties in inventory
-                // and turn off fault and locate LED
+                log<level::ERR>(
+                    "Present pin is true but power good pin is false.",
+                    entry("INDEX=%s", config.index.c_str()));
+                log<level::ERR>("Erase SSD from map and d-bus.",
+                                entry("INDEX=%s", config.index.c_str()));
 
-                setFaultLED(config.locateLedGroupPath, config.faultLedGroupPath,
-                            false);
-                setLocateLED(config.locateLedGroupPath,
-                             config.locateLedControllerBusName,
-                             config.locateLedControllerPath, false);
-
-                nvmeData = NVMeData();
-                setNvmeInventoryProperties(config, false, nvmeData,
-                                           inventoryPath);
-                nvmes.erase(config.index);
-                continue;
-            }
-            else if (config.pwrGoodPin)
-            {
-                devPwrGoodPath = GPIO_BASE_PATH +
-                                 std::to_string(config.pwrGoodPin) + "/value";
-
-                if (getGPIOValueOfNvme(devPwrGoodPath) != POWERGD)
-                {
-                    // IFDET should be used to provide the final say
-                    // in SSD's presence - IFDET showing SSD is present
-                    // but the power is off (if the drive is plugged in)
-                    // is a valid state.
-
-                    setFaultLED(config.locateLedGroupPath,
-                                config.faultLedGroupPath, true);
-                    setLocateLED(config.locateLedGroupPath,
-                                 config.locateLedControllerBusName,
-                                 config.locateLedControllerPath, false);
-
-                    nvmeData = NVMeData();
-                    setNvmeInventoryProperties(config, true, nvmeData,
-                                               inventoryPath);
-
-                    if (isErrorPower[config.index] != true)
-                    {
-                        log<level::ERR>(
-                            "Present pin is true but power good pin is false.",
-                            entry("INDEX=%s", config.index.c_str()));
-                        log<level::ERR>(
-                            "Erase SSD from map and d-bus.",
-                            entry("INDEX=%s", config.index.c_str()));
-
-                        isErrorPower[config.index] = true;
-                    }
-
-                    // Keep reading to report the invalid temperature
-                    // (To make thermal loop know that the sensor reading
-                    //  is invalid).
-                    readNvmeData(config);
-                    continue;
-                }
+                isErrorPower[config.index] = true;
             }
         }
-        // Drive status is good, update value or create d-bus and update
-        // value.
-        readNvmeData(config);
+        else
+        {
+            isErrorPower[config.index] = false;
+        }
 
-        isErrorPower[config.index] = false;
+        // Keep reading to report the invalid temperature
+        // (To make thermal loop know that the sensor reading
+        //  is invalid).
+        readNvmeData(config);
     }
 }
 } // namespace nvme
