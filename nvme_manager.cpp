@@ -617,6 +617,7 @@ void Nvme::read()
                                     : IS_PRESENT;
         auto pwrGoodPinValStr =
             (config.pwrGoodPin) ? getGPIOValueOfNvme(devPwrGoodPath) : POWERGD;
+        const bool isPwrGood = (pwrGoodPinValStr == POWERGD);
 
         if (presentPinValStr != IS_PRESENT)
         {
@@ -636,7 +637,7 @@ void Nvme::read()
             continue;
         }
 
-        if (pwrGoodPinValStr != POWERGD)
+        if (!isPwrGood)
         {
             // IFDET should be used to provide the final say
             // in SSD's presence - IFDET showing SSD is present
@@ -672,6 +673,8 @@ void Nvme::read()
         // (To make thermal loop know that the sensor reading
         //  is invalid).
         readNvmeData(config);
+        nvmes.find(config.index)
+            ->second->setSensorAvailability(isPwrGood);
     }
 }
 } // namespace nvme
