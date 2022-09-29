@@ -46,6 +46,30 @@
       },
       "revId": "d4f5199251f2acbcf007c9bc163fd65d3695655b",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "018052cf_47d9ad17",
+        "filename": "nvme_manager.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 1000388
+      },
+      "writtenOn": "2022-09-29T21:01:08Z",
+      "side": 0,
+      "message": "I guess the other difference is that if config.presentPin was false, we would skip to \n\n```\n        readNvmeData(config);\n\n        isErrorPower[config.index] \u003d false;\n```\n\nWe now tie setting `isErrorPower[config.index] \u003d false;` to if `pwrGoodPinValStr \u003d\u003d POWERGD`\n\nIt is a difference in behavior, but because it defaults `pwrGoodPinValStr` to `POWERGD`, perhaps this is ok.",
+      "parentUuid": "6f0585e6_2a05717c",
+      "range": {
+        "startLine": 668,
+        "startChar": 0,
+        "endLine": 681,
+        "endChar": 5
+      },
+      "revId": "d4f5199251f2acbcf007c9bc163fd65d3695655b",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     }
   ]
 }
