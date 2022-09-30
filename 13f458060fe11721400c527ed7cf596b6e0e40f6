@@ -16,6 +16,24 @@
       "message": "Was this tested?",
       "revId": "13f458060fe11721400c527ed7cf596b6e0e40f6",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d56e0595_2068f08c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1001264
+      },
+      "writtenOn": "2022-09-30T05:39:59Z",
+      "side": 1,
+      "message": "I tested this patch with another patch together on Bletchley.\nThe test log is posted in the below patch.\n\nnvmes: add Availability interface\nhttps://gerrit.openbmc.org/c/openbmc/phosphor-nvme/+/57316",
+      "parentUuid": "3dd6cf62_a9dab92f",
+      "revId": "13f458060fe11721400c527ed7cf596b6e0e40f6",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     }
   ]
 }
