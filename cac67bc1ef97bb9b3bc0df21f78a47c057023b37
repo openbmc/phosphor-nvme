@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b769c583_3b6436f9",
+        "filename": "nvme_manager.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1000388
+      },
+      "writtenOn": "2022-10-03T19:39:33Z",
+      "side": 1,
+      "message": "nit: since we use this conditional above at line 639, why don\u0027t we just have a variable: `const bool isPwrGood \u003d pwrGoodPinValStr \u003d\u003d POWERGD`\n\nAt line 639, we use !isPwrGood\n\nand then here we use `setSensorAvailability(isPwrGood)`",
+      "range": {
+        "startLine": 677,
+        "startChar": 17,
+        "endLine": 677,
+        "endChar": 44
+      },
+      "revId": "cac67bc1ef97bb9b3bc0df21f78a47c057023b37",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    }
+  ]
+}
