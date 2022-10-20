@@ -14,6 +14,7 @@
 
 #include "i2c.h"
 #define MONITOR_INTERVAL_SECONDS 1
+#define MAX_SMBUS_ERROR_RETRY 0
 #define NVME_SSD_SLAVE_ADDRESS 0x6a
 #define NVME_SSD_VPD_SLAVE_ADDRESS 0x53
 #define GPIO_BASE_PATH "/sys/class/gpio/gpio"
@@ -375,7 +376,7 @@ void Nvme::run()
     std::function<void()> callback(std::bind(&Nvme::read, this));
     try
     {
-        u_int64_t interval = MONITOR_INTERVAL_SECONDS * 1000000;
+        u_int64_t interval = monitorIntervalSec * 1000000;
         _timer.restart(std::chrono::microseconds(interval));
     }
     catch (const std::exception& e)
@@ -421,6 +422,8 @@ std::vector<phosphor::nvme::Nvme::NVMeConfig> Nvme::getNvmeConfig()
         static const std::vector<Json> empty{};
         std::vector<Json> readings = data.value("config", empty);
         std::vector<Json> thresholds = data.value("threshold", empty);
+        monitorIntervalSec = data.value("MonitorInterval", MONITOR_INTERVAL_SECONDS);
+
         if (!thresholds.empty())
         {
             for (const auto& instance : thresholds)
