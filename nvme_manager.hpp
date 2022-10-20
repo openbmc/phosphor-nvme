@@ -155,6 +155,9 @@ class Nvme
     void read();
 
     std::vector<phosphor::nvme::Nvme::NVMeConfig> getNvmeConfig();
+
+    /** @brief Monitor interval in second  */
+    uint16_t monitorIntervalSec;
 };
 } // namespace nvme
 } // namespace phosphor
