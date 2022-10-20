@@ -375,7 +375,7 @@ void Nvme::run()
     std::function<void()> callback(std::bind(&Nvme::read, this));
     try
     {
-        u_int64_t interval = MONITOR_INTERVAL_SECONDS * 1000000;
+        u_int64_t interval = monitorIntervalSec * 1000000;
         _timer.restart(std::chrono::microseconds(interval));
     }
     catch (const std::exception& e)
@@ -421,6 +421,9 @@ std::vector<phosphor::nvme::Nvme::NVMeConfig> Nvme::getNvmeConfig()
         static const std::vector<Json> empty{};
         std::vector<Json> readings = data.value("config", empty);
         std::vector<Json> thresholds = data.value("threshold", empty);
+        monitorIntervalSec =
+            data.value("monitorIntervalSec", MONITOR_INTERVAL_SECONDS);
+
         if (!thresholds.empty())
         {
             for (const auto& instance : thresholds)
