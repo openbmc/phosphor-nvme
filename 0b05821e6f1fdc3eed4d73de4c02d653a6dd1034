@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abc9b9b6_36b97a3d",
+        "filename": "nvme_manager.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1000388
+      },
+      "writtenOn": "2022-10-25T23:27:37Z",
+      "side": 1,
+      "message": "nit: monitorInterval\n\nLet\u0027s keep using lowerCamelback",
+      "range": {
+        "startLine": 425,
+        "startChar": 24,
+        "endLine": 425,
+        "endChar": 39
+      },
+      "revId": "0b05821e6f1fdc3eed4d73de4c02d653a6dd1034",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a41aecea_b82e7fde",
+        "filename": "nvme_manager.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1000388
+      },
+      "writtenOn": "2022-10-25T23:27:37Z",
+      "side": 1,
+      "message": "Could we actually name it monitorIntervalSec\n\nHaving the unit helps when reading through the json",
+      "range": {
+        "startLine": 425,
+        "startChar": 24,
+        "endLine": 425,
+        "endChar": 39
+      },
+      "revId": "0b05821e6f1fdc3eed4d73de4c02d653a6dd1034",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ff98783_71b7fd89",
+        "filename": "nvme_manager.hpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1000388
+      },
+      "writtenOn": "2022-10-25T23:27:37Z",
+      "side": 1,
+      "message": "nit: size_t is preferred for uints",
+      "range": {
+        "startLine": 160,
+        "startChar": 4,
+        "endLine": 160,
+        "endChar": 12
+      },
+      "revId": "0b05821e6f1fdc3eed4d73de4c02d653a6dd1034",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    }
+  ]
+}
