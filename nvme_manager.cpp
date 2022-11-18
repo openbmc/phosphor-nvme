@@ -327,7 +327,7 @@ bool Nvme::getNVMeInfobyBusID(int busID,
                 static_cast<char>(rsp_data_command_8[offset]);
     }
 
-    if (nvmeData.vendor == "Samsung")
+    if ((nvmeData.vendor == "Samsung") || (nvmeData.vendor == "Kioxia"))
     {
         unsigned char rsp_data_vpd[I2C_DATA_MAX] = {0};
         const int rx_len = (MODELNUMBER_END_INDEX - MODELNUMBER_START_INDEX);
