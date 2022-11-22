@@ -68,6 +68,23 @@
       "parentUuid": "21a1789e_90404f43",
       "revId": "e8b2773e2c06c108c300c1e726b3d13e6bc2f505",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b8a3e78_6a73f0bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000335
+      },
+      "writtenOn": "2022-11-22T09:33:11Z",
+      "side": 1,
+      "message": "Would you mind to do the rebase or re-trigger CI?",
+      "revId": "e8b2773e2c06c108c300c1e726b3d13e6bc2f505",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     }
   ]
 }
