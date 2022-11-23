@@ -32,21 +32,4 @@
 # data within them will be kept sorted.
 
 owners:
-- benjaminfair@google.com
 - brandonkim@google.com
-- tony.lee@quantatw.com
-
-reviewers:
-
-matchers:
-
-openbmc:
-- name: Benjamin Fair
-  email: benjaminfair@google.com
-  discord: benjaminfair
-- name: Brandon Kim
-  email: brandonkim@google.com
-  discord: brandonk
-- name: Tony Lee
-  email: tony.lee@quantatw.com
-  discord: Tony Lee
