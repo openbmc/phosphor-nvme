@@ -14,6 +14,7 @@
 
 #include "i2c.h"
 #define MONITOR_INTERVAL_SECONDS 1
+#define MAX_SMBUS_ERROR_RETRY 0
 #define NVME_SSD_SLAVE_ADDRESS 0x6a
 #define NVME_SSD_VPD_SLAVE_ADDRESS 0x53
 #define GPIO_BASE_PATH "/sys/class/gpio/gpio"
@@ -423,6 +424,8 @@ std::vector<phosphor::nvme::Nvme::NVMeConfig> Nvme::getNvmeConfig()
         std::vector<Json> thresholds = data.value("threshold", empty);
         monitorIntervalSec =
             data.value("monitorIntervalSec", MONITOR_INTERVAL_SECONDS);
+        maxSmbusErrorRetry =
+            data.value("maxSmbusErrorRetry", MAX_SMBUS_ERROR_RETRY);
 
         if (!thresholds.empty())
         {
@@ -556,6 +559,23 @@ void Nvme::readNvmeData(NVMeConfig& config)
     auto success = getNVMeInfobyBusID(config.busID, nvmeData);
     auto iter = nvmes.find(config.index);
 
+    if (success)
+    {
+        nvmeSmbusErrCnt[config.busID] = 0;
+    }
+    else
+    {
+        if (nvmeSmbusErrCnt[config.busID] < maxSmbusErrorRetry)
+        {
+            // skip this time if error count less than maxSmbusErrorRetry
+            nvmeSmbusErrCnt[config.busID]++;
+            log<level::INFO>("getNVMeInfobyBusID failed, retry...",
+                             entry("INDEX=%s", config.index.c_str()),
+                             entry("ERRCNT=%u", nvmeSmbusErrCnt[config.busID]));
+            return;
+        }
+    }
+
     // can not find. create dbus
     if (iter == nvmes.end())
     {
@@ -676,7 +696,10 @@ void Nvme::read()
         // (To make thermal loop know that the sensor reading
         //  is invalid).
         readNvmeData(config);
-        nvmes.find(config.index)->second->setSensorAvailability(isPwrGood);
+        if (nvmes.find(config.index) != nvmes.end())
+        {
+            nvmes.find(config.index)->second->setSensorAvailability(isPwrGood);
+        }
     }
 }
 } // namespace nvme
