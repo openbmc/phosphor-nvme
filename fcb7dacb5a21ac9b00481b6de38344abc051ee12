@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7acf8d77_857dafc4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000388
+      },
+      "writtenOn": "2022-11-23T21:36:08Z",
+      "side": 1,
+      "message": "assuming the OWNERS plugin actually takes into effect with the changed OWNERS file as part of this change, it looks like it\u0027s per repo and perhaps not per maintainer (as I\u0027ve verified that meta-google repo is functioning even with me as a maintainer here: https://gerrit.openbmc.org/c/openbmc/openbmc/+/58931)",
+      "revId": "fcb7dacb5a21ac9b00481b6de38344abc051ee12",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    }
+  ]
+}
