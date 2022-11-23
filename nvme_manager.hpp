@@ -158,6 +158,10 @@ class Nvme
 
     /** @brief Monitor interval in second  */
     size_t monitorIntervalSec;
+    /** @brief Maximum smbus error retry  */
+    uint16_t maxSmbusErrorRetry;
+    /** @brief Map of each NVMe smbus error count */
+    std::unordered_map<int, uint16_t> nvmeSmbusErrCnt;
 };
 } // namespace nvme
 } // namespace phosphor
