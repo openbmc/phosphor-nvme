@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "464b0d14_d33aece0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000388
+      },
+      "writtenOn": "2022-11-28T22:35:37Z",
+      "side": 1,
+      "message": "(got a comment \"Looks good to me\" from Tony, when the UI was preventing him from voting). Benjamin is away on holidays so self +2ing this change.",
+      "revId": "89a24e10571f4333b393566e884498531bfbe82a",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    }
+  ]
+}
