@@ -85,6 +85,24 @@
       "message": "Would you mind to do the rebase or re-trigger CI?",
       "revId": "e8b2773e2c06c108c300c1e726b3d13e6bc2f505",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30bf0a1c_100a61d9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000388
+      },
+      "writtenOn": "2022-11-28T21:46:43Z",
+      "side": 1,
+      "message": "Hi Tony - we\u0027re discussing in the Discord chat regarding why we can\u0027t push this patch, and we are thinking that the commonality between the repos that this is affecting are most likely due to the \".\" in the middle of the email.\n\nTo test this theory out, we\u0027re thinking of pushing a change directly to the tree temporarily: https://gerrit.openbmc.org/c/openbmc/phosphor-nvme/+/58929/1/OWNERS \n\nIf we find this is the cause, I think we have a few options such as:\n1. We may need another email without . in the email as a short term solution\n2. We will need to root cause why this plugin is not working with . (if this is the root cause), and this may take some time.",
+      "parentUuid": "0bf37b38_53dcf951",
+      "revId": "e8b2773e2c06c108c300c1e726b3d13e6bc2f505",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     }
   ]
 }
