@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abe22986_8b4d684e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000388
+      },
+      "writtenOn": "2022-12-05T20:20:28Z",
+      "side": 1,
+      "message": "do you mean 0 retry?",
+      "range": {
+        "startLine": 15,
+        "startChar": 17,
+        "endLine": 15,
+        "endChar": 25
+      },
+      "revId": "2ee726d37a9e16c8d191e1b405c41969a3d60949",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9317e289_5466d94d",
+        "filename": "nvme_manager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 702,
+      "author": {
+        "id": 1000388
+      },
+      "writtenOn": "2022-12-05T20:20:28Z",
+      "side": 1,
+      "message": "Could there be any regressions from this? Could you add more details about this change in the commit message as well",
+      "range": {
+        "startLine": 699,
+        "startChar": 1,
+        "endLine": 702,
+        "endChar": 9
+      },
+      "revId": "2ee726d37a9e16c8d191e1b405c41969a3d60949",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    }
+  ]
+}
