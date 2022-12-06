@@ -1,0 +1,8 @@
+Verified+1: OpenBMC CI <openbmcbump-ci@yahoo.com>
+Code-Review+2: Brandon Kim <brandonkim@google.com>
+Code-Review+1: Patrick Williams <patrick@stwcx.xyz>
+Submitted-by: Brandon Kim <brandonkim@google.com>
+Submitted-at: Tue, 06 Dec 2022 02:31:03 +0000
+Reviewed-on: https://gerrit.openbmc.org/c/openbmc/phosphor-nvme/+/58915
+Project: openbmc/phosphor-nvme
+Branch: refs/heads/master
