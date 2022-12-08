@@ -1,6 +1,6 @@
-### phosphor-nvme
+# phosphor-nvme
 
-#### Introduction
+## Introduction
 
 phosphor-nvme is the nvme manager service maintains for NVMe drive information
 update and related notification processing service. The service update
@@ -8,7 +8,7 @@ information to `xyz/openbmc_project/Nvme/Status.interface.yaml`,
 `xyz/openbmc_project/Sensor/Value.interface.yaml` and other interfaces in
 `xyz.openbmc_project.Inventory.Manager`.
 
-#### General usage
+## General usage
 
 The service `xyz.openbmc_project.nvme.manager` provides object on D-Bus:
 
@@ -22,7 +22,7 @@ corresponding settings in the sensor map are configured correctly. For example:
 
 - To get sensor value:
 
-  ```
+  ```sh
   ### With ipmi command on BMC
   ipmitool sdr elist
   ```
@@ -71,12 +71,12 @@ get-property command. For example:
 
 - To get property Present:
 
-  ```
+  ```sh
   ### With busctl on BMC
   busctl get-property xyz.openbmc_project.Inventory.Manager /xyz/openbmc_project/inventory/system/chassis/motherboard/nvme0 xyz.openbmc_project.Inventory.Item Present
   ```
 
-#### Configuration file
+## Configuration file
 
 There is a JSON configuration file `nvme_config.json` for drive index, bus ID,
 and the LED object path and bus name for each drive. For example,
@@ -135,7 +135,7 @@ and the LED object path and bus name for each drive. For example,
   - maxValue: Sensor maximum value.
   - minValue: Sensor value.
 
-#### Process
+## Process
 
 1. It will register a D-bus called `xyz.openbmc_project.nvme.manager`
    description above.
