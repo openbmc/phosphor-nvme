@@ -130,7 +130,7 @@ class Nvme
                             phosphor::nvme::Nvme::NVMeData& nvmeData);
 
     /** @brief read and update NVME data to dbus */
-    void readNvmeData(NVMeConfig& config);
+    void readNvmeData(NVMeConfig& config, bool isPwrGood);
 
   private:
     /** @brief sdbusplus bus client connection. */
