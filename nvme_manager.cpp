@@ -550,14 +550,28 @@ void Nvme::init()
     createNVMeInventory();
 }
 
-void Nvme::readNvmeData(NVMeConfig& config)
+void Nvme::readNvmeData(NVMeConfig& config, bool isPwrGood)
 {
     std::string inventoryPath = NVME_INVENTORY_PATH + config.index;
     NVMeData nvmeData;
 
     // get NVMe information through i2c by busID.
-    auto success = getNVMeInfobyBusID(config.busID, nvmeData);
-    auto iter = nvmes.find(config.index);
+    bool success;
+
+    // skip reading nvme data when power good is false
+    if (isPwrGood)
+    {
+        success = getNVMeInfobyBusID(config.busID, nvmeData);
+    }
+    else
+    {
+        nvmeData.present = false;
+        nvmeData.sensorValue = static_cast<int8_t>(TEMPERATURE_SENSOR_FAILURE);
+        success = false;
+        // Skip retry below when isPwrGood is false because smbus is going to
+        // fail
+        nvmeSmbusErrCnt[config.busID] = maxSmbusErrorRetry;
+    }
 
     if (success)
     {
@@ -567,7 +581,7 @@ void Nvme::readNvmeData(NVMeConfig& config)
     {
         if (nvmeSmbusErrCnt[config.busID] < maxSmbusErrorRetry)
         {
-            // skip this time if error count less than maxSmbusErrorRetry
+            // Return early so that we retry
             nvmeSmbusErrCnt[config.busID]++;
             log<level::INFO>("getNVMeInfobyBusID failed, retry...",
                              entry("INDEX=%s", config.index.c_str()),
@@ -575,6 +589,9 @@ void Nvme::readNvmeData(NVMeConfig& config)
             return;
         }
     }
+
+    // find NvmeSSD object by index
+    auto iter = nvmes.find(config.index);
 
     // can not find. create dbus
     if (iter == nvmes.end())
@@ -695,7 +712,7 @@ void Nvme::read()
         // Keep reading to report the invalid temperature
         // (To make thermal loop know that the sensor reading
         //  is invalid).
-        readNvmeData(config);
+        readNvmeData(config, isPwrGood);
         if (nvmes.find(config.index) != nvmes.end())
         {
             nvmes.find(config.index)->second->setSensorAvailability(isPwrGood);
