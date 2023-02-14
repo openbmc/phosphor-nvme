@@ -550,16 +550,27 @@ void Nvme::init()
     createNVMeInventory();
 }
 
-void Nvme::readNvmeData(NVMeConfig& config)
+void Nvme::readNvmeData(NVMeConfig& config, bool isPwrGood)
 {
     std::string inventoryPath = NVME_INVENTORY_PATH + config.index;
     NVMeData nvmeData;
 
     // get NVMe information through i2c by busID.
-    auto success = getNVMeInfobyBusID(config.busID, nvmeData);
-    auto iter = nvmes.find(config.index);
+    bool success;
 
-    if (success)
+    // skip reading nvme data when power good is false
+    if (isPwrGood)
+    {
+        success = getNVMeInfobyBusID(config.busID, nvmeData);
+    }
+    else
+    {
+        nvmeData.present = false;
+        nvmeData.sensorValue = static_cast<int8_t>(TEMPERATURE_SENSOR_FAILURE);
+        success = false;
+    }
+
+    if (success || !isPwrGood)
     {
         nvmeSmbusErrCnt[config.busID] = 0;
     }
@@ -575,6 +586,9 @@ void Nvme::readNvmeData(NVMeConfig& config)
             return;
         }
     }
+
+    // find NvmeSSD object by index
+    auto iter = nvmes.find(config.index);
 
     // can not find. create dbus
     if (iter == nvmes.end())
@@ -695,7 +709,7 @@ void Nvme::read()
         // Keep reading to report the invalid temperature
         // (To make thermal loop know that the sensor reading
         //  is invalid).
-        readNvmeData(config);
+        readNvmeData(config, isPwrGood);
         if (nvmes.find(config.index) != nvmes.end())
         {
             nvmes.find(config.index)->second->setSensorAvailability(isPwrGood);
