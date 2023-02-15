@@ -24,6 +24,30 @@
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "38d53072_dfff3d3d",
+        "filename": "nvme_manager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1001264
+      },
+      "writtenOn": "2023-02-15T01:30:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ffd66791_ded20140",
+      "range": {
+        "startLine": 560,
+        "startChar": 0,
+        "endLine": 560,
+        "endChar": 41
+      },
+      "revId": "170042ebfd59459917a952bc114f509b0d5ddce6",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1437fb8a_84cf7911",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-02-14T17:38:38Z",
       "side": 1,
       "message": "Hmm... does this make sense?\n\nShould we behave closer to when it was not successful (the else statement) and return?\n\nI guess we already set success to false above - do we even want to go through the below code? Should we return at line 571 after setting success\u003dfalse?",
+      "range": {
+        "startLine": 574,
+        "startChar": 16,
+        "endLine": 574,
+        "endChar": 29
+      },
+      "revId": "170042ebfd59459917a952bc114f509b0d5ddce6",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cacd599_cdd8ce66",
+        "filename": "nvme_manager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 1001264
+      },
+      "writtenOn": "2023-02-15T01:30:04Z",
+      "side": 1,
+      "message": "nvmeSmbusErrCnt[] is for retry mechanism when smbus failed.\nI was thinking skipping retry when `isPwrGood` is false because smbus is going to failed anyway.\n\n\nIn original design, it doesn\u0027t return when success is false, it always continues setting the sensor reading and LED status.",
+      "parentUuid": "1437fb8a_84cf7911",
       "range": {
         "startLine": 574,
         "startChar": 16,
