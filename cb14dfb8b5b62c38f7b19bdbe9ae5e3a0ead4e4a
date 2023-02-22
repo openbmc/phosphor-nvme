@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8aa6a03a_1d42207c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000388
+      },
+      "writtenOn": "2023-02-22T05:00:39Z",
+      "side": 1,
+      "message": "Apologies for the delayed response!",
+      "revId": "cb14dfb8b5b62c38f7b19bdbe9ae5e3a0ead4e4a",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84a27f55_2a270a62",
+        "filename": "nvme_manager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 1000388
+      },
+      "writtenOn": "2023-02-22T05:00:39Z",
+      "side": 1,
+      "message": "This comment is confusing, could you clarify by saying:\n\n`// Return early so that we retry`",
+      "range": {
+        "startLine": 581,
+        "startChar": 30,
+        "endLine": 581,
+        "endChar": 73
+      },
+      "revId": "cb14dfb8b5b62c38f7b19bdbe9ae5e3a0ead4e4a",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    }
+  ]
+}

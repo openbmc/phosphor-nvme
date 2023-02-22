@@ -117,6 +117,30 @@
       },
       "revId": "170042ebfd59459917a952bc114f509b0d5ddce6",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "292d9d64_30412cab",
+        "filename": "nvme_manager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 1000388
+      },
+      "writtenOn": "2023-02-22T05:00:39Z",
+      "side": 1,
+      "message": "Ah you\u0027re right - I read this logic backwards.\n\nI think it\u0027s confusing because we\u0027re setting the error count to 0 even though we\u0027re definitely at an error state.\n\nInstead of overloading this conditional with \"success\", what if we made it so at the `if (isPwrGood) .... else` check in 566, we set:\n\n```\n// Skip retry below when isPwrGood is false because smbus is going to fail\nnvmeSmbusErrCnt[config.busID] \u003d maxSmbusErrorRetry;\n```\n\nThis way it\u0027s clear that we\u0027re going to the \"else\" to retry, but also skip the retry.",
+      "parentUuid": "320a71a6_74e356ad",
+      "range": {
+        "startLine": 574,
+        "startChar": 16,
+        "endLine": 574,
+        "endChar": 29
+      },
+      "revId": "170042ebfd59459917a952bc114f509b0d5ddce6",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     }
   ]
 }
