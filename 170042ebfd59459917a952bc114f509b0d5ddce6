@@ -141,6 +141,30 @@
       },
       "revId": "170042ebfd59459917a952bc114f509b0d5ddce6",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "882d1902_59be014c",
+        "filename": "nvme_manager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 1001264
+      },
+      "writtenOn": "2023-02-22T08:56:27Z",
+      "side": 1,
+      "message": "Done.\nThanks a lot for the suggestions!",
+      "parentUuid": "292d9d64_30412cab",
+      "range": {
+        "startLine": 574,
+        "startChar": 16,
+        "endLine": 574,
+        "endChar": 29
+      },
+      "revId": "170042ebfd59459917a952bc114f509b0d5ddce6",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     }
   ]
 }
