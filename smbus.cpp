@@ -1,5 +1,7 @@
 #include "smbus.hpp"
 
+#include "i2c.h"
+
 #include <errno.h>
 #include <fcntl.h>
 #include <stdint.h>
@@ -11,8 +13,6 @@
 
 #include <iostream>
 #include <mutex>
-
-#include "i2c.h"
 
 #define MAX_I2C_BUS 30
 static constexpr bool DEBUG = false;

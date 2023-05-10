@@ -2,17 +2,17 @@
 
 #include <string.h>
 
-#include <fstream>
 #include <phosphor-logging/elog-errors.hpp>
 #include <phosphor-logging/log.hpp>
 #include <sdbusplus/bus.hpp>
 #include <sdbusplus/sdbus.hpp>
 #include <sdbusplus/server/manager.hpp>
+
+#include <fstream>
 using namespace phosphor::logging;
 
 int main(void)
 {
-
     sdbusplus::bus_t bus = sdbusplus::bus::new_default();
 
     sd_event* event = nullptr;

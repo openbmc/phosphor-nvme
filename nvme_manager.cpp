@@ -1,18 +1,19 @@
 #include "nvme_manager.hpp"
 
+#include "i2c.h"
+
 #include "smbus.hpp"
 
-#include <filesystem>
-#include <map>
 #include <nlohmann/json.hpp>
 #include <phosphor-logging/elog-errors.hpp>
 #include <phosphor-logging/log.hpp>
 #include <sdbusplus/message.hpp>
-#include <sstream>
-#include <string>
 #include <xyz/openbmc_project/Led/Physical/server.hpp>
 
-#include "i2c.h"
+#include <filesystem>
+#include <map>
+#include <sstream>
+#include <string>
 #define MONITOR_INTERVAL_SECONDS 1
 #define MAX_SMBUS_ERROR_RETRY 0
 #define NVME_SSD_SLAVE_ADDRESS 0x6a
@@ -185,7 +186,6 @@ void Nvme::setLEDsStatus(const phosphor::nvme::Nvme::NVMeConfig& config,
                          bool success,
                          const phosphor::nvme::Nvme::NVMeData& nvmeData)
 {
-
     if (success)
     {
         if (!nvmeData.smartWarnings.empty())
@@ -306,8 +306,8 @@ bool Nvme::getNVMeInfobyBusID(int busID,
         return nvmeData.present;
     }
 
-    nvmeData.vendor =
-        intToHex(rsp_data_command_8[1]) + " " + intToHex(rsp_data_command_8[2]);
+    nvmeData.vendor = intToHex(rsp_data_command_8[1]) + " " +
+                      intToHex(rsp_data_command_8[2]);
 
     for (auto iter = map_vendor.begin(); iter != map_vendor.end(); iter++)
     {
@@ -406,7 +406,6 @@ Json parseSensorConfig()
 /** @brief Obtain the initial configuration value of NVMe  */
 std::vector<phosphor::nvme::Nvme::NVMeConfig> Nvme::getNvmeConfig()
 {
-
     phosphor::nvme::Nvme::NVMeConfig nvmeConfig;
     std::vector<phosphor::nvme::Nvme::NVMeConfig> nvmeConfigs;
     int8_t criticalHigh = 0;
@@ -422,10 +421,10 @@ std::vector<phosphor::nvme::Nvme::NVMeConfig> Nvme::getNvmeConfig()
         static const std::vector<Json> empty{};
         std::vector<Json> readings = data.value("config", empty);
         std::vector<Json> thresholds = data.value("threshold", empty);
-        monitorIntervalSec =
-            data.value("monitorIntervalSec", MONITOR_INTERVAL_SECONDS);
-        maxSmbusErrorRetry =
-            data.value("maxSmbusErrorRetry", MAX_SMBUS_ERROR_RETRY);
+        monitorIntervalSec = data.value("monitorIntervalSec",
+                                        MONITOR_INTERVAL_SECONDS);
+        maxSmbusErrorRetry = data.value("maxSmbusErrorRetry",
+                                        MAX_SMBUS_ERROR_RETRY);
 
         if (!thresholds.empty())
         {
@@ -647,10 +646,10 @@ void Nvme::read()
         NVMeData nvmeData;
 
         inventoryPath = NVME_INVENTORY_PATH + config.index;
-        devPresentPath =
-            GPIO_BASE_PATH + std::to_string(config.presentPin) + "/value";
-        devPwrGoodPath =
-            GPIO_BASE_PATH + std::to_string(config.pwrGoodPin) + "/value";
+        devPresentPath = GPIO_BASE_PATH + std::to_string(config.presentPin) +
+                         "/value";
+        devPwrGoodPath = GPIO_BASE_PATH + std::to_string(config.pwrGoodPin) +
+                         "/value";
 
         auto presentPinValStr = (config.presentPin)
                                     ? getGPIOValueOfNvme(devPresentPath)
