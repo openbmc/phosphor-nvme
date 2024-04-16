@@ -93,6 +93,54 @@
       },
       "revId": "a8698a6a5453492eb390aa1d6dfd1025826f5e77",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "223b7761_d2f60b37",
+        "filename": "nvme_manager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000388
+      },
+      "writtenOn": "2024-04-16T16:54:45Z",
+      "side": 1,
+      "message": "Thanks - inline comment at the code site would be better, but this is recorded in the commit message and the mask is fairly clear so I\u0027m ok with it 😊",
+      "parentUuid": "56a35953_b8a083dc",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 54
+      },
+      "revId": "a8698a6a5453492eb390aa1d6dfd1025826f5e77",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f7b5c5e_a49c065f",
+        "filename": "nvme_manager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000388
+      },
+      "writtenOn": "2024-04-16T16:54:45Z",
+      "side": 1,
+      "message": "Ah sorry, almost confused you and myself with my comment about bit 5, looks like it\u0027s correctly bit 6. Thanks!",
+      "parentUuid": "ee363282_65d9b1ff",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 54
+      },
+      "revId": "a8698a6a5453492eb390aa1d6dfd1025826f5e77",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     }
   ]
 }
