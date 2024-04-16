@@ -37,6 +37,7 @@ static constexpr int temperatureFaultMask = 1 << 1;
 static constexpr int DegradesFaultMask = 1 << 2;
 static constexpr int MediaFaultMask = 1 << 3;
 static constexpr int BackupDeviceFaultMask = 1 << 4;
+static constexpr int DriveNotReadyMask = 1 << 6;
 static constexpr int NOWARNING = 255;
 
 static constexpr int SERIALNUMBER_START_INDEX = 3;
@@ -279,6 +280,17 @@ bool Nvme::getNVMeInfobyBusID(int busID,
         smbus.smbusClose(busID);
         nvmeData.present = false;
         return nvmeData.present;
+    }
+
+    if (rsp_data_command_0[1] & DriveNotReadyMask)
+    {
+        if (isErrorSmbus[busID] != true)
+        {
+            log<level::ERR>("Drive not ready!");
+            isErrorSmbus[busID] = true;
+        }
+        smbus.smbusClose(busID);
+        return false;
     }
 
     nvmeData.statusFlags = intToHex(rsp_data_command_0[1]);
