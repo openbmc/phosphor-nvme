@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68d67e3e_a00bf3e3",
+        "filename": "nvme_manager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000388
+      },
+      "writtenOn": "2024-04-16T07:43:05Z",
+      "side": 1,
+      "message": "We should use the \"Mask\" format as above at line 39, etc. so it\u0027s easier to read that it\u0027s \"bit 5\" according to the spec.",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 54
+      },
+      "revId": "a8698a6a5453492eb390aa1d6dfd1025826f5e77",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e2c4c46_bea22a67",
+        "filename": "nvme_manager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000388
+      },
+      "writtenOn": "2024-04-16T07:43:05Z",
+      "side": 1,
+      "message": "Since this should be part of the NVMe spec (thus, we can waive some testing required here given that all drives SHOULD be following it) - could you make it more explicit with the spec we can find it in / page?",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 54
+      },
+      "revId": "a8698a6a5453492eb390aa1d6dfd1025826f5e77",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    }
+  ]
+}
