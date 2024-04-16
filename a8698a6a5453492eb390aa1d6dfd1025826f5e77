@@ -45,6 +45,54 @@
       },
       "revId": "a8698a6a5453492eb390aa1d6dfd1025826f5e77",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56a35953_b8a083dc",
+        "filename": "nvme_manager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1001312
+      },
+      "writtenOn": "2024-04-16T11:24:06Z",
+      "side": 1,
+      "message": "Hi Brandon, the \"Drive Not Ready\" bit is defined in Figure 176 on page 155 of the NVMe specification (https://nvmexpress.org/wp-content/uploads/NVM-Express-Management-Interface-Specification-1.2c-2022.10.06-Ratified-1.pdf)",
+      "parentUuid": "4e2c4c46_bea22a67",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 54
+      },
+      "revId": "a8698a6a5453492eb390aa1d6dfd1025826f5e77",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee363282_65d9b1ff",
+        "filename": "nvme_manager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1001312
+      },
+      "writtenOn": "2024-04-16T11:24:06Z",
+      "side": 1,
+      "message": "Done. I\u0027ve updated this parameter.",
+      "parentUuid": "68d67e3e_a00bf3e3",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 54
+      },
+      "revId": "a8698a6a5453492eb390aa1d6dfd1025826f5e77",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     }
   ]
 }
