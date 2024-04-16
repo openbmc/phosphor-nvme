@@ -44,6 +44,7 @@ static constexpr int SERIALNUMBER_END_INDEX = 23;
 static constexpr int MODELNUMBER_START_INDEX = 46;
 static constexpr int MODELNUMBER_END_INDEX = 85;
 
+static constexpr const int DRIVE_NOT_READY_BIT = 0x40;
 static constexpr const int TEMPERATURE_SENSOR_FAILURE = 0x81;
 
 static std::map<std::string, std::string> map_vendor = {
@@ -279,6 +280,16 @@ bool Nvme::getNVMeInfobyBusID(int busID,
         smbus.smbusClose(busID);
         nvmeData.present = false;
         return nvmeData.present;
+    }
+
+    if (rsp_data_command_0[1] & DRIVE_NOT_READY_BIT){
+        if (isErrorSmbus[busID] != true)
+        {
+            log<level::ERR>("Drive not ready!");
+            isErrorSmbus[busID] = true;
+        }
+        smbus.smbusClose(busID);
+        return false;
     }
 
     nvmeData.statusFlags = intToHex(rsp_data_command_0[1]);
