@@ -625,7 +625,8 @@ void Nvme::readNvmeData(NVMeConfig& config, bool isPwrGood)
         nvmeSSD->setSensorThreshold(config.criticalHigh, config.criticalLow,
                                     config.warningHigh, config.warningLow);
 
-        nvmeSSD->checkSensorThreshold();
+        if (success)
+            nvmeSSD->checkSensorThreshold();
         setLEDsStatus(config, success, nvmeData);
     }
     else
@@ -641,7 +642,8 @@ void Nvme::readNvmeData(NVMeConfig& config, bool isPwrGood)
                 config.criticalHigh, config.criticalLow, config.warningHigh,
                 config.warningLow);
         }
-        iter->second->checkSensorThreshold();
+        if (success)
+            iter->second->checkSensorThreshold();
         setLEDsStatus(config, success, nvmeData);
     }
 }
