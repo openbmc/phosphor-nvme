@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3322d677_a72532e8",
+        "filename": "nvme_manager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 727,
+      "author": {
+        "id": 1000388
+      },
+      "writtenOn": "2024-04-19T09:59:35Z",
+      "side": 1,
+      "message": "I\u0027m a littttle worried that for some reason, we \"want\" to be reporting invalid temperatures. I wonder if Benjamin remembers this part..?",
+      "range": {
+        "startLine": 725,
+        "startChar": 7,
+        "endLine": 727,
+        "endChar": 24
+      },
+      "revId": "a77827224ed0847779da98c206450bdd82b21f78",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    }
+  ]
+}
