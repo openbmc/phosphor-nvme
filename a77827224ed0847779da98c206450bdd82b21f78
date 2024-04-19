@@ -22,6 +22,30 @@
       },
       "revId": "a77827224ed0847779da98c206450bdd82b21f78",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf07ef43_739c6c45",
+        "filename": "nvme_manager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 727,
+      "author": {
+        "id": 1000233
+      },
+      "writtenOn": "2024-04-19T19:37:24Z",
+      "side": 1,
+      "message": "I don\u0027t remember either, but it\u0027s likely related to the phosphor-pid-control handling of missing vs invalid sensors for when it decides to go into failsafe.",
+      "parentUuid": "3322d677_a72532e8",
+      "range": {
+        "startLine": 725,
+        "startChar": 7,
+        "endLine": 727,
+        "endChar": 24
+      },
+      "revId": "a77827224ed0847779da98c206450bdd82b21f78",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     }
   ]
 }
