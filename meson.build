@@ -21,6 +21,7 @@ executable(
         dependency('sdbusplus'),
         dependency('phosphor-dbus-interfaces'),
         dependency('sdeventplus'),
+        dependency('nlohmann_json')
     ],
     install: true,
     install_dir: get_option('bindir')
