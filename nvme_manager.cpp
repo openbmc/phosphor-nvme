@@ -453,7 +453,7 @@ std::vector<phosphor::nvme::Nvme::NVMeConfig> Nvme::getNvmeConfig()
         else
         {
             log<level::ERR>(
-                "Invalid NVMe config file, thresholds dosen't exist");
+                "Invalid NVMe config file, thresholds doesn't exist");
         }
 
         if (!readings.empty())
@@ -493,7 +493,7 @@ std::vector<phosphor::nvme::Nvme::NVMeConfig> Nvme::getNvmeConfig()
         }
         else
         {
-            log<level::ERR>("Invalid NVMe config file, config dosen't exist");
+            log<level::ERR>("Invalid NVMe config file, config doesn't exist");
         }
     }
     catch (const Json::exception& e)
