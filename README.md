@@ -89,7 +89,7 @@ and the LED object path and bus name for each drive. For example,
       "NVMeDriveBusID": 16,
       "NVMeDriveFaultLEDGroupPath": "/xyz/openbmc_project/led/groups/led_u2_0_fault",
       "NVMeDriveLocateLEDGroupPath": "/xyz/openbmc_project/led/groups/led_u2_0_locate",
-      "NVMeDriveLocateLEDControllerBusName": "xyz.openbmc_project.LED.Controller.led_u2_0_locate",
+      "NVMeDriveLocateLEDControllerBusName": "xyz.openbmc_project.LED.Controller",
       "NVMeDriveLocateLEDControllerPath": "/xyz/openbmc_project/led/physical/led_u2_0_locate",
       "NVMeDrivePresentPin": 148,
       "NVMeDrivePwrGoodPin": 161
@@ -99,7 +99,7 @@ and the LED object path and bus name for each drive. For example,
       "NVMeDriveBusID": 17,
       "NVMeDriveFaultLEDGroupPath": "/xyz/openbmc_project/led/groups/led_u2_1_fault",
       "NVMeDriveLocateLEDGroupPath": "/xyz/openbmc_project/led/groups/led_u2_1_locate",
-      "NVMeDriveLocateLEDControllerBusName": "xyz.openbmc_project.LED.Controller.led_u2_1_locate",
+      "NVMeDriveLocateLEDControllerBusName": "xyz.openbmc_project.LED.Controller",
       "NVMeDriveLocateLEDControllerPath": "/xyz/openbmc_project/led/physical/led_u2_1_locate",
       "NVMeDrivePresentPin": 149,
       "NVMeDrivePwrGoodPin": 162
@@ -123,8 +123,7 @@ and the LED object path and bus name for each drive. For example,
     SMBus.
   - NVMeDriveFaultLEDGroupPath: Object path of fault LED in LED Group Manager.
   - NVMeDriveLocateLEDGroupPath: Object path of locate LED in LED Group Manager.
-  - NVMeDriveLocateLEDControllerBusName: D-Bus name of locate LED in LED
-    Controller.
+  - NVMeDriveLocateLEDControllerBusName: D-Bus name of LED Controller.
   - NVMeDriveLocateLEDControllerPath: Object path of locate LED in LED
     Controller.
   - NVMeDrivePresentPin: Gpio present pin of NVMe drive.
