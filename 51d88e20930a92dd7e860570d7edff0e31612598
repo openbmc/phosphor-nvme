@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75e2640f_6596d952",
+        "filename": "nvme_config.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000388
+      },
+      "writtenOn": "2024-07-16T16:27:09Z",
+      "side": 1,
+      "message": "Looks like other instances I see are https://github.com/openbmc/meta-quanta/tree/master/meta-gbs/recipes-phosphor/sensors/phosphor-nvme - which probably should be handled by Quanta",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 88
+      },
+      "revId": "51d88e20930a92dd7e860570d7edff0e31612598",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    }
+  ]
+}
