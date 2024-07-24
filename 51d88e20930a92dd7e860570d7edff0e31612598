@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b877159_ff04db2d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001712
+      },
+      "writtenOn": "2024-07-24T16:19:14Z",
+      "side": 1,
+      "message": "phosphor-led-sysfs has been bumped\n\nhttps://gerrit.openbmc.org/c/openbmc/openbmc/+/72927\n\nso we can consider to merge this change",
+      "revId": "51d88e20930a92dd7e860570d7edff0e31612598",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "75e2640f_6596d952",
