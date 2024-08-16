@@ -17,7 +17,7 @@ namespace smbus
 class Smbus
 {
   public:
-    Smbus(){};
+    Smbus() {};
 
     int openI2cDev(int i2cbus, char* filename, size_t size, int quiet);
 

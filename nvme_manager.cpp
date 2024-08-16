@@ -265,9 +265,9 @@ bool Nvme::getNVMeInfobyBusID(int busID,
         return nvmeData.present;
     }
 
-    auto res_int = smbus.SendSmbusRWCmdRAW(busID, NVME_SSD_SLAVE_ADDRESS,
-                                           &tx_data, sizeof(tx_data),
-                                           rsp_data_command_0, CODE_0_LENGTH);
+    auto res_int = smbus.SendSmbusRWCmdRAW(
+        busID, NVME_SSD_SLAVE_ADDRESS, &tx_data, sizeof(tx_data),
+        rsp_data_command_0, CODE_0_LENGTH);
 
     if (res_int < 0)
     {
@@ -318,8 +318,8 @@ bool Nvme::getNVMeInfobyBusID(int busID,
         return nvmeData.present;
     }
 
-    nvmeData.vendor = intToHex(rsp_data_command_8[1]) + " " +
-                      intToHex(rsp_data_command_8[2]);
+    nvmeData.vendor =
+        intToHex(rsp_data_command_8[1]) + " " + intToHex(rsp_data_command_8[2]);
 
     for (auto iter = map_vendor.begin(); iter != map_vendor.end(); iter++)
     {
@@ -433,10 +433,10 @@ std::vector<phosphor::nvme::Nvme::NVMeConfig> Nvme::getNvmeConfig()
         static const std::vector<Json> empty{};
         std::vector<Json> readings = data.value("config", empty);
         std::vector<Json> thresholds = data.value("threshold", empty);
-        monitorIntervalSec = data.value("monitorIntervalSec",
-                                        MONITOR_INTERVAL_SECONDS);
-        maxSmbusErrorRetry = data.value("maxSmbusErrorRetry",
-                                        MAX_SMBUS_ERROR_RETRY);
+        monitorIntervalSec =
+            data.value("monitorIntervalSec", MONITOR_INTERVAL_SECONDS);
+        maxSmbusErrorRetry =
+            data.value("maxSmbusErrorRetry", MAX_SMBUS_ERROR_RETRY);
 
         if (!thresholds.empty())
         {
@@ -660,10 +660,10 @@ void Nvme::read()
         NVMeData nvmeData;
 
         inventoryPath = NVME_INVENTORY_PATH + config.index;
-        devPresentPath = GPIO_BASE_PATH + std::to_string(config.presentPin) +
-                         "/value";
-        devPwrGoodPath = GPIO_BASE_PATH + std::to_string(config.pwrGoodPin) +
-                         "/value";
+        devPresentPath =
+            GPIO_BASE_PATH + std::to_string(config.presentPin) + "/value";
+        devPwrGoodPath =
+            GPIO_BASE_PATH + std::to_string(config.pwrGoodPin) + "/value";
 
         auto presentPinValStr = (config.presentPin)
                                     ? getGPIOValueOfNvme(devPresentPath)
