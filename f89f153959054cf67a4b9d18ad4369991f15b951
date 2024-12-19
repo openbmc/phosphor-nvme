@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca3800d4_f31b6cc1",
+        "filename": "nvme_manager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000388
+      },
+      "writtenOn": "2024-12-19T17:57:44Z",
+      "side": 0,
+      "message": "had to read up on std::stoi - this seems to be safe to convert to nullptr, as that indicates that we don\u0027t care about the first \"unconverted character position\". We already don\u0027t here, because we passed in a 0, instead of a pointer to a size_t variable that\u0027s initialized to 0 (so that stoi can write to indicate the output position).",
+      "range": {
+        "startLine": 105,
+        "startChar": 68,
+        "endLine": 105,
+        "endChar": 69
+      },
+      "revId": "f89f153959054cf67a4b9d18ad4369991f15b951",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    }
+  ]
+}
