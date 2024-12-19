@@ -102,7 +102,7 @@ void Nvme::setNvmeInventoryProperties(
                                      NVME_STATUS_IFACE, "SmartWarnings",
                                      nvmeData.smartWarnings);
         auto smartWarning = (!nvmeData.smartWarnings.empty())
-                                ? std::stoi(nvmeData.smartWarnings, 0, 16)
+                                ? std::stoi(nvmeData.smartWarnings, nullptr, 16)
                                 : NOWARNING;
 
         util::SDBusPlus::setProperty(bus, INVENTORY_BUSNAME, inventoryPath,
