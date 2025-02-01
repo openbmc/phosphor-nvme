@@ -2,32 +2,25 @@ project(
     'phosphor-nvme',
     'cpp',
     version: '1.0',
-    default_options: [
-        'cpp_std=c++23',
-    ],
+    default_options: ['cpp_std=c++23'],
     meson_version: '>=1.1.1',
 )
 
 executable(
     'nvme_main',
-    [
-        'nvme_main.cpp',
-        'nvme_manager.cpp',
-        'smbus.cpp',
-        'nvmes.cpp',
-    ],
+    ['nvme_main.cpp', 'nvme_manager.cpp', 'smbus.cpp', 'nvmes.cpp'],
     dependencies: [
         dependency('phosphor-logging'),
         dependency('sdbusplus'),
         dependency('phosphor-dbus-interfaces'),
         dependency('sdeventplus'),
-        dependency('nlohmann_json')
+        dependency('nlohmann_json'),
     ],
     install: true,
-    install_dir: get_option('bindir')
+    install_dir: get_option('bindir'),
 )
 
-install_data(sources : 'nvme_config.json', install_dir : '/etc/nvme')
+install_data(sources: 'nvme_config.json', install_dir: '/etc/nvme')
 
 conf_data = configuration_data()
 conf_data.set('NVME_REQUEST_NAME', '"xyz.openbmc_project.nvme.manager"')
@@ -41,19 +34,25 @@ conf_data.set('ITEM_IFACE', '"xyz.openbmc_project.Inventory.Item"')
 conf_data.set('NVME_STATUS_IFACE', '"xyz.openbmc_project.Nvme.Status"')
 conf_data.set('ASSET_IFACE', '"xyz.openbmc_project.Inventory.Decorator.Asset"')
 conf_data.set('INVENTORY_BUSNAME', '"xyz.openbmc_project.Inventory.Manager"')
-conf_data.set('NVME_INVENTORY_PATH', '"/xyz/openbmc_project/inventory/system/chassis/motherboard/nvme"')
+conf_data.set(
+    'NVME_INVENTORY_PATH',
+    '"/xyz/openbmc_project/inventory/system/chassis/motherboard/nvme"',
+)
 conf_data.set('INVENTORY_NAMESPACE', '"/xyz/openbmc_project/inventory"')
-conf_data.set('INVENTORY_MANAGER_IFACE', '"xyz.openbmc_project.Inventory.Manager"')
+conf_data.set(
+    'INVENTORY_MANAGER_IFACE',
+    '"xyz.openbmc_project.Inventory.Manager"',
+)
 
-configure_file(output : 'config.h',
-               configuration : conf_data)
+configure_file(output: 'config.h', configuration: conf_data)
 
 systemd = dependency('systemd')
 conf_data = configuration_data()
 conf_data.set('bindir', get_option('prefix') / get_option('bindir'))
 configure_file(
-  input: 'xyz.openbmc_project.nvme.manager.service.in',
-  output: 'xyz.openbmc_project.nvme.manager.service',
-  configuration: conf_data,
-  install: true,
-  install_dir: systemd.get_variable('systemdsystemunitdir'))
+    input: 'xyz.openbmc_project.nvme.manager.service.in',
+    output: 'xyz.openbmc_project.nvme.manager.service',
+    configuration: conf_data,
+    install: true,
+    install_dir: systemd.get_variable('systemdsystemunitdir'),
+)
