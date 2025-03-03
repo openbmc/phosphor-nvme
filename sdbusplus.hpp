@@ -8,6 +8,8 @@
 
 #include <iostream>
 
+#include "config.h"
+
 namespace phosphor
 {
 namespace nvme
