@@ -42,7 +42,7 @@ class NvmeSSD : public NvmeIfaces
      * @param[in] objPath - The Dbus path of nvme
      */
     NvmeSSD(sdbusplus::bus_t& bus, const char* objPath) :
-        NvmeIfaces(bus, objPath), bus(bus)
+        NvmeIfaces(bus, objPath)
     {
         ValueIface::unit(Unit::DegreesC);
     }
@@ -58,9 +58,6 @@ class NvmeSSD : public NvmeIfaces
     void setSensorMaxMin(int8_t maxValue, int8_t minValue);
     /** @brief Set Sensor Availability to D-bus */
     void setSensorAvailability(bool avail);
-
-  private:
-    sdbusplus::bus_t& bus;
 };
 } // namespace nvme
 } // namespace phosphor
