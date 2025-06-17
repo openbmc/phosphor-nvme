@@ -48,7 +48,10 @@ static constexpr int MODELNUMBER_END_INDEX = 85;
 static constexpr const int TEMPERATURE_SENSOR_FAILURE = 0x81;
 
 static std::map<std::string, std::string> map_vendor = {
-    {"80 86", "Intel"}, {"1e f", "Kioxia"}, {"14 4d", "Samsung"}};
+    {"80 86", "Intel"},
+    {"1e f", "Kioxia"},
+    {"14 4d", "Samsung"},
+    {"1b 96", "Sandisk"}};
 
 namespace fs = std::filesystem;
 
@@ -340,7 +343,8 @@ bool Nvme::getNVMeInfobyBusID(int busID,
                 static_cast<char>(rsp_data_command_8[offset]);
     }
 
-    if ((nvmeData.vendor == "Samsung") || (nvmeData.vendor == "Kioxia"))
+    if ((nvmeData.vendor == "Samsung") || (nvmeData.vendor == "Kioxia") ||
+        (nvmeData.vendor == "Sandisk"))
     {
         unsigned char rsp_data_vpd[I2C_DATA_MAX] = {0};
         const int rx_len = (MODELNUMBER_END_INDEX - MODELNUMBER_START_INDEX);
