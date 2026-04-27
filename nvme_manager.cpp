@@ -545,7 +545,7 @@ void Nvme::createNVMeInventory()
     using Interfaces = std::map<std::string, Properties>;
 
     std::string inventoryPath;
-    std::map<sdbusplus::message::object_path, Interfaces> obj;
+    std::map<sdbusplus::object_path, Interfaces> obj;
 
     for (const auto& config : configs)
     {
